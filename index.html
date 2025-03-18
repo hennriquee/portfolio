@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="index.css" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <title>Portfolio Web</title>
+  </head>
+  <body>
+    <header>
+      <a class="logo" href="#">Portfolio.</a>
+
+      <div class="navbar">
+        <a href="#home" data-aos="fade-up" data-aos-duration="200">Início</a>
+        <a href="#skills" data-aos="fade-up" data-aos-duration="400"
+          >Habilidades</a
+        >
+        <!-- <a href="#services" data-aos="fade-up" data-aos-duration="700"
+          >Serviços
+        </a> -->
+        <a href="#experiences" data-aos="fade-up" data-aos-duration="700"
+          >Experiências
+        </a>
+        <a href="#about" data-aos="fade-up" data-aos-duration="900">Sobre</a>
+        <a href="#contact" data-aos="fade-up" data-aos-duration="1000"
+          >Contato</a
+        >
+      </div>
+
+      <div class="navbar-responsive">
+        <a href="#home">Início</a>
+        <a href="#skills">Habilidades</a>
+        <!-- <a href="#services">Serviços </a> -->
+        <a href="#experiences">Experiências </a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contato</a>
+      </div>
+
+      <div class="menu-hamburguer">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </header>
+
+    <!-- home section -->
+    <section id="home" class="home">
+      <div class="home-content" data-aos="fade-up" data-aos-duration="1000">
+        <h1>Olá,</h1>
+        <h1>Eu sou <span>Bruno Henrique</span></h1>
+        <div id="typed-strings">
+          <h1>Desenvolvedor Front-End.</h1>
+          <h1>Analista de Dados.</h1>
+        </div>
+        <span id="typed"></span>
+        <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="60">
+          "O coração do sábio adquire o conhecimento, <br />e o ouvido dos
+          sábios procura o saber." <br />
+          <span>Provérbios</span> 18:15
+        </p>
+        <div class="home-btns" data-aos="fade-up" data-aos-duration="2200">
+          <a href="./doc/Curriculo.pdf" class="btn" download="Curriculo.pdf"
+            >Download CV</a
+          >
+          <a href="#contact" class="contact-btn">Contact Info</a>
+        </div>
+      </div>
+
+      <div class="home-img" data-aos="fade-up" data-aos-duration="1500">
+        <img src="./img/boypc.jpg" alt="" />
+      </div>
+    </section>
+    <!-- /home section -->
+
+    <!-- skills section -->
+    <section id="skills" class="skills">
+      <h1 data-aos="fade-up" data-aos-duration="500">
+        <span>Habilidades</span>
+      </h1>
+      <div class="skills-main">
+        <div
+          class="skills-container"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <div class="skills-box">
+            <div class="skills-box-front">
+              <div class="skills-box-front-content">
+                <div class="skills-box-front-title">
+                  <i class="bx bx-code-alt"></i>
+
+                  <h3>Web Development</h3>
+                </div>
+
+                <div class="skills-box-front-text">
+                  <p>
+                    Desenvolvimento e manutenção de sites e aplicações web,
+                    potencializando sua performance e alcance.
+                  </p>
+                </div>
+              </div>
+
+              <a class="btn"> Saiba mais </a>
+            </div>
+
+            <div class="skills-box-back">
+              <div class="skills-box-back-content">
+                <h3>Conhecimentos</h3>
+
+                <div class="skills-items">
+                  <div class="skill-item html-item">
+                    <div class="skill-title">
+                      <h5>HTML</h5>
+                      <i class="bx bxl-html5"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="html-bar"></div>
+                    </div>
+                    <p id="html-pct"></p>
+                  </div>
+
+                  <div class="skill-item css-item">
+                    <div class="skill-title">
+                      <h5>CSS</h5>
+                      <i class="bx bxl-css3"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="css-bar"></div>
+                    </div>
+                    <p id="css-pct"></p>
+                  </div>
+
+                  <div class="skill-item js-item">
+                    <div class="skill-title">
+                      <h5>Javascript</h5>
+                      <i class="bx bxl-javascript"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="js-bar"></div>
+                    </div>
+                    <p id="js-pct"></p>
+                  </div>
+
+                  <div class="skill-item reactjs-item">
+                    <div class="skill-title">
+                      <h5>React.js</h5>
+                      <i class="bx bxl-react"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="reactjs-bar"></div>
+                    </div>
+                    <p id="reactjs-pct"></p>
+                  </div>
+
+                  <div class="skill-item bootstrap-item">
+                    <div class="skill-title">
+                      <h5>Material UI, Bootstrap</h5>
+                      <i class="bx bxl-bootstrap"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="bootstrap-bar"></div>
+                    </div>
+                    <p id="bootstrap-pct"></p>
+                  </div>
+                </div>
+              </div>
+
+              <a class="btn"> Retornar </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="skills-container"
+          data-aos="fade-up"
+          data-aos-duration="1300"
+        >
+          <div class="skills-box">
+            <div class="skills-box-front">
+              <div class="skills-box-front-content">
+                <div class="skills-box-front-title">
+                  <i class="bx bx-data"></i>
+                  <h3>Data Bases</h3>
+                </div>
+
+                <div class="skills-box-front-text">
+                  <p>
+                    Gerenciamento e otimização de bancos de dados, garantindo a
+                    performance e a sua segurança.
+                  </p>
+                </div>
+              </div>
+
+              <a class="btn"> Saiba mais </a>
+            </div>
+
+            <div class="skills-box-back">
+              <div class="skills-box-back-content">
+                <h3>Conhecimentos</h3>
+
+                <div class="skills-items">
+                  <div class="skill-item sql-item">
+                    <div class="skill-title">
+                      <h5>SQL</h5>
+                      <i class="bx bxs-data"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="sql-bar"></div>
+                    </div>
+                    <p id="sql-pct"></p>
+                  </div>
+
+                  <div class="skill-item excel-item">
+                    <div class="skill-title">
+                      <h5>Excel</h5>
+                      <i class="bx bxl-microsoft"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="excel-bar"></div>
+                    </div>
+                    <p id="excel-pct"></p>
+                  </div>
+                </div>
+              </div>
+
+              <a class="btn"> Retornar </a>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="skills-container"
+          data-aos="fade-up"
+          data-aos-duration="1600"
+        >
+          <div class="skills-box">
+            <div class="skills-box-front">
+              <div class="skills-box-front-content">
+                <div class="skills-box-front-title">
+                  <i class="bx bx-line-chart"></i>
+                  <h3>Business Intelligence</h3>
+                </div>
+
+                <div class="skills-box-front-text">
+                  <p>
+                    Desenvolvimento e análise de informações e processos para
+                    BI's, potencializando seu desempenho.
+                  </p>
+                </div>
+              </div>
+
+              <a class="btn"> Saiba mais </a>
+            </div>
+
+            <div class="skills-box-back">
+              <div class="skills-box-back-content">
+                <h3>Conhecimentos</h3>
+
+                <div class="skills-items">
+                  <div class="skill-item pbi-item">
+                    <div class="skill-title">
+                      <h5>Power BI</h5>
+                      <i class="bx bxs-bar-chart-square"></i>
+                    </div>
+
+                    <div class="bar">
+                      <div id="pbi-bar"></div>
+                    </div>
+                    <p id="pbi-pct"></p>
+                  </div>
+                </div>
+              </div>
+
+              <a class="btn"> Retornar </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /skills section -->
+
+    <!-- services section -->
+    <!-- <section id="services" class="services">
+      <h1 data-aos="fade-up" data-aos-duration="500">
+        <span>Serviços</span>
+      </h1>
+      <div
+        class="services-container"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        <div class="services-box">
+          <img src="./img/project-img-1.jpg" alt="" />
+        </div>
+        <div class="services-box">
+          <img src="./img/project-img-2.jpg" alt="" />
+        </div>
+        <div class="services-box">
+          <img src="./img/project-img-3.jpg" alt="" />
+        </div>
+        <div class="services-box">
+          <img src="./img/project-img-4.jpg" alt="" />
+        </div>
+        <div class="services-box">
+          <img src="./img/project-img-5.jpg" alt="" />
+        </div>
+        <div class="services-box">
+          <img src="./img/project-img-6.jpg" alt="" />
+        </div>
+      </div>
+    </section> -->
+    <!-- services section -->
+
+    <!-- experiences section -->
+    <section id="experiences" class="experiences">
+      <h1 data-aos="fade-up" data-aos-duration="500">Experiências</h1>
+
+      <div class="experiences-main" data-aos="fade-up" data-aos-duration="1200">
+        <div class="experiences-container">
+          <div class="experience-container-title">
+            <h2>Educação</h2>
+          </div>
+          <div class="experiences-content">
+            <div class="experiences-box exp-concl">
+              <i class="bx bxs-badge-check"></i>
+
+              <div class="experiences-box-content">
+                <div class="experiences-box-header">
+                  <h4>Ensino Fundamental</h4>
+                  <p>12/2019</p>
+                </div>
+
+                <p class="instituicao">Prof° Otávio B. C. Filho</p>
+              </div>
+            </div>
+
+            <div class="experiences-box exp-concl">
+              <i class="bx bxs-badge-check"></i>
+
+              <div class="experiences-box-content">
+                <div class="experiences-box-header">
+                  <h4>Ensino Médio</h4>
+                  <p>12/2022</p>
+                </div>
+                <p class="instituicao">Mais Positivo</p>
+              </div>
+            </div>
+
+            <div class="experiences-box">
+              <i class="bx bxs-badge-check"></i>
+
+              <div class="experiences-box-content">
+                <div class="experiences-box-header">
+                  <h4>Ensino Superior</h4>
+                  <p>12/2027</p>
+                </div>
+                <p class="instituicao">Uniube - S. I.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="experiences-container">
+          <div class="experience-container-title">
+            <h2>Profissional</h2>
+          </div>
+          <div class="experiences-content">
+            <div class="experiences-box exp-concl">
+              <i class="bx bxs-badge-check"></i>
+
+              <div class="experiences-box-content">
+                <div class="experiences-box-header">
+                  <h4>Atendente de Tel.</h4>
+                  <p>08/23 - 04/24</p>
+                </div>
+
+                <p class="instituicao">Callink</p>
+              </div>
+            </div>
+
+            <div class="experiences-box exp-concl">
+              <i class="bx bxs-badge-check"></i>
+
+              <div class="experiences-box-content">
+                <div class="experiences-box-header">
+                  <h4>Auxiliar de PCP</h4>
+                  <p>04/24 - 05/24</p>
+                </div>
+                <p class="instituicao">Ubertec</p>
+              </div>
+            </div>
+
+            <div class="experiences-box">
+              <i class="bx bxs-badge-check"></i>
+
+              <div class="experiences-box-content">
+                <div class="experiences-box-header">
+                  <h4>Analista de Dados</h4>
+                  <p>05/24 - atual</p>
+                </div>
+                <p class="instituicao">Ubertec</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /experiences section -->
+
+    <!-- about section -->
+    <section id="about" class="about">
+      <div class="about-main">
+        <div class="about-img" data-aos="fade-up" data-aos-duration="1000">
+          <img src="./img/profile.png" alt="profile-img" />
+        </div>
+        <div class="about-content">
+          <h1 data-aos="fade-up" data-aos-duration="1000">
+            <span>Sobre mim</span>
+          </h1>
+          <p data-aos="fade-up" data-aos-duration="1100">
+            Meu nome é <span>Bruno Henrique</span>, sou natural e residente de
+            <span>Uberlândia, Minas Gerais</span>. Atualmente, curso
+            <span>Sistemas de Informação</span> na <span>Uniube</span>, com
+            previsão de conclusão para dezembro de 2027. Trabalho como
+            <span>Analista de Dados</span> na <span>Ubertec</span>, onde,
+            atendendo as três filiais, desenvolvo dashboards interativos em
+            <span>Power BI</span>, contribuindo nas tomadas de decisões
+            estratégicas da empresa. Sou uma pessoa <span>detalhista</span> e
+            que <span>ama aprender</span>, sempre buscando aprimorar meus
+            conhecimentos e habilidades.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- about section -->
+
+    <!-- contact section -->
+    <section id="contact" class="contact">
+      <h1>
+        <span>Contate me</span>
+      </h1>
+
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/xwplpvow"
+        method="POST"
+      >
+        <input name="nome" type="text" placeholder="Nome" required />
+        <input name="email" type="email" placeholder="E-mail" required />
+        <input
+          id="telefone"
+          name="telefone"
+          type="tel"
+          placeholder="Telefone"
+        />
+        <input name="assunto" type="text" placeholder="Assunto" required />
+        <textarea
+          name="mensagem"
+          cols="30"
+          rows="7"
+          placeholder="Mensagem"
+        ></textarea>
+
+        <button type="submit" class="btn">Enviar</button>
+      </form>
+    </section>
+    <!-- contact section -->
+
+    <footer>
+      <h5>&copy; Bruno Henrique.</h5>
+      <a
+        href="https://wa.me/5534996560351?text=Olá,+tenho+interesse+em+seus+produtos!"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i class="bx bxl-whatsapp"></i>
+      </a>
+    </footer>
+
+    <!-- SCROLL EFFECT -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <!-- SCROLL EFFECT -->
+
+    <!-- TYPED JS EFFECT -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+    <script>
+      var typed = new Typed("#typed", {
+        stringsElement: "#typed-strings",
+        backSpeed: 40,
+        typeSpeed: 40,
+        loop: true,
+      });
+    </script>
+
+    <!-- /TYPED JS EFFECT -->
+  </body>
+  <script src="scripts.js"></script>
+</html>
