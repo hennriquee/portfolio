@@ -129,7 +129,7 @@ header * {
 .navbar-responsive a {
   display: flex;
   flex-direction: column;
-  margin: 0.5rem;
+  margin: 1rem;
 }
 
 .navbar-responsive {
@@ -139,7 +139,8 @@ header * {
   left: 0;
   width: 100%;
   padding: 1rem;
-  background-color: var(--bg-color);
+  background-color: var(--white-color);
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .menu-hamburguer {
@@ -187,6 +188,13 @@ section {
 .home-content {
   margin-top: 2rem;
   margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.home-content-main {
+  width: 100%;
+
 }
 
 .home-content p {
@@ -711,20 +719,52 @@ form .btn {
 /* FOOTER */
 
 footer {
-  left: 0;
+  padding-top: 1rem;
   bottom: 0;
   width: 100%;
-  padding: 1rem;
   text-align: center;
   background-color: #0d1425;
   color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 7rem;
+  text-align: center;
+}
+
+.footer-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+
 }
 
 footer i {
   cursor: pointer;
   color: var(--white-color);
+  transition: .5s ease;
+  opacity: 0.6;
+  padding: 0.5rem;
+  width: 100%;
 }
 
+footer i:hover {
+  opacity: 1;
+  transform: translateY(-5px);
+
+
+}
+
+.footer-title h3 {
+  margin: 0 0.5rem;
+
+}
 /* /FOOTER */
 
 /* SCROLL BAR */
@@ -779,11 +819,15 @@ footer i {
   .home {
     flex-direction: column;
     gap: 3rem;
-    padding: 5rem 5rem;
+    padding: 4rem 2rem;
     padding-top: 7rem;
   }
   .home-content {
     width: 100%;
+  }
+
+  .home-btns {
+    justify-content: center;
   }
 
   .home-content h1,
@@ -809,9 +853,8 @@ footer i {
     flex-direction: column;
   }
 
-  .skills,
-  .experiences {
-    padding: 2rem 5rem;
+  .skills {
+    padding: 2rem 3rem;
   }
 
   .services {
@@ -830,7 +873,7 @@ footer i {
     padding: 1rem;
   }
   .contact {
-    padding: 1rem 6rem;
+    padding: 1rem 3rem;
   }
 
   .about {
@@ -844,7 +887,7 @@ footer i {
   }
 
   .about-img {
-    width: 40%;
+    width: 60%;
   }
 
   .about-content {
@@ -866,9 +909,6 @@ footer i {
     background-color: #888888;
   } */
 
-  header {
-    background-color: var(--navbar-bgcolor);
-  }
 
   .services-container {
     grid-template-columns: auto auto;
@@ -885,16 +925,16 @@ footer i {
   .contact {
     padding-top: 3rem;
   }
+
+  .about-img {
+    width: 40%;
+  }
 }
 
 @media (min-width: 768px) {
   /* header {
     background-color: #ff0000;
   } */
-
-  header {
-    background-color: var(--navbar-bgcolor);
-  }
 
   .menu-hamburguer {
     display: none;
@@ -910,6 +950,14 @@ footer i {
 
   .home {
     padding: 7rem 4rem;
+  }
+
+  .home-content {
+    justify-content: start;
+  }
+  
+  .home-btns {
+    justify-content: start;
   }
 
   .skills {
