@@ -78,7 +78,7 @@ const vjs_pct = 10;
 const vbootstrap_pct = 50;
 const vreactjs_pct = 5;
 const vsql_pct = 25;
-const vpbi_pct = 95;
+const vpbi_pct = 80;
 const vexcel_pct = 90;
 
 const html = document.getElementById("html-bar");
