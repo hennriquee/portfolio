@@ -4,6 +4,7 @@
   box-sizing: border-box;
   text-decoration: none;
   font-family: "Poppins", sans-serif;
+  -webkit-tap-highlight-color: none;
 }
 
 :root {
@@ -47,7 +48,7 @@ header {
   position: fixed;
   width: 100%;
   display: flex;
-  padding: 0.3rem 1rem;
+  padding: 0.7rem 1rem;
   justify-content: space-between;
   z-index: 100;
 }
@@ -836,6 +837,10 @@ footer i:hover {
     width: 100%;
   }
 
+  .home-btns {
+    justify-content: center;
+  }
+
   h2 {
     font-size: 1.3rem;
   }
@@ -853,7 +858,7 @@ footer i:hover {
   }
 
   .skills {
-    padding: 2rem 3rem;
+    padding: 2rem 2rem;
   }
 
   .services {
@@ -865,12 +870,21 @@ footer i:hover {
   }
 
   .experiences {
-    padding: 3rem;
+    padding: 2rem;
   }
 
   .experiences-container {
     padding: 1rem;
   }
+
+  .experiences-box-header h4 {
+    font-size: 0.8rem;
+  }
+
+  .experiences-box .instituicao {
+    font-size: 0.8rem;
+  }
+
   .contact {
     padding: 1rem 3rem;
   }
@@ -985,6 +999,10 @@ footer i:hover {
     align-items: center;
   }
 
+  .home-btns {
+    justify-content: start;
+  }
+
   .home-content {
     width: 45%;
   }
@@ -995,6 +1013,14 @@ footer i:hover {
 
   .experiences-main {
     flex-direction: row;
+  }
+
+  .experiences-box-header h4 {
+    font-size: 1rem;
+  }
+
+  .experiences-box .instituicao {
+    font-size: 1rem;
   }
 
   .experiences-container {
