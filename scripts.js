@@ -21,16 +21,58 @@ function toggleMenu() {
 }
 // /Menu Hambúrguer
 
-// Flip Skills Cards
+// CONHECIMENTOS
+
+const valores = {
+  "html-bar": 80,
+  "css-bar": 50,
+  "js-bar": 10,
+  "bootstrap-bar": 50,
+  "reactjs-bar": 5,
+  "sql-bar": 25,
+  "pbi-bar": 80,
+  "excel-bar": 90,
+};
+
 const buttons = document.querySelectorAll(".btn");
 
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
-    const container = e.target.closest(".skills-container"); // Pega o container certo
+    const container = e.target.closest(".skills-container");
     container.classList.toggle("flip");
+
+    if (container.classList.contains("flip")) {
+      container.querySelectorAll(".bar-inner").forEach((element) => {
+        const id = element.id;
+        const destino = valores[id];
+
+        element.style.transition = `transform ${destino * 0.025}s ease`;
+        element.style.transform = `scaleX(${destino / 100})`;
+
+        const textoPct = document.getElementById(id.replace("bar", "pct"));
+        let contador = 0;
+
+        const intervalo = setInterval(() => {
+          if (contador >= destino) {
+            clearInterval(intervalo);
+          } else {
+            contador++;
+            textoPct.textContent = contador + "%";
+          }
+        }, 20);
+      });
+    } else {
+      container.querySelectorAll(".bar-inner").forEach((element) => {
+        element.style.transform = "scaleX(0)";
+        element.style.transition = `transform ${
+          valores[element.id] * 0.025
+        }s ease`;
+      });
+    }
   });
 });
-// /Flip Skills Cards
+
+// /CONHECIMENTOS
 
 // Evento que formata o campo de telefone conforme o usuário digita
 document.getElementById("telefone").addEventListener("input", function (event) {
@@ -59,74 +101,14 @@ document.getElementById("telefone").addEventListener("input", function (event) {
 document
   .getElementById("contact-form")
   .addEventListener("submit", function (event) {
-    var telefone = document.getElementById("telefone").value;
+    var telefone = document.getElementById("telefone").value.trim();
     var telefoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
 
-    if (!telefoneRegex.test(telefone)) {
+    // Só valida o formato se o campo não estiver vazio
+    if (telefone !== "(" && telefone !== "" && !telefoneRegex.test(telefone)) {
       alert(
         "Por favor, insira um número de telefone válido no formato (xx) xxxxx-xxxx."
       );
       event.preventDefault(); // Evita o envio do formulário
     }
   });
-
-// CONHECIMENTOS
-
-const vhtml_pct = 80;
-const vcss_pct = 50;
-const vjs_pct = 10;
-const vbootstrap_pct = 50;
-const vreactjs_pct = 5;
-const vsql_pct = 25;
-const vpbi_pct = 80;
-const vexcel_pct = 90;
-
-const html = document.getElementById("html-bar");
-html.style.width = `${vhtml_pct}%`;
-html.style.height = "100%";
-const htmlp = document.getElementById("html-pct");
-htmlp.textContent = `${vhtml_pct}%`;
-
-const css = document.getElementById("css-bar");
-css.style.width = `${vcss_pct}%`;
-css.style.height = "100%";
-const cssp = document.getElementById("css-pct");
-cssp.textContent = `${vcss_pct}%`;
-
-const js = document.getElementById("js-bar");
-js.style.width = `${vjs_pct}%`;
-js.style.height = "100%";
-const jsp = document.getElementById("js-pct");
-jsp.textContent = `${vjs_pct}%`;
-
-const bootstrap = document.getElementById("bootstrap-bar");
-bootstrap.style.width = `${vbootstrap_pct}%`;
-bootstrap.style.height = "100%";
-const bootstrapp = document.getElementById("bootstrap-pct");
-bootstrapp.textContent = `${vbootstrap_pct}%`;
-
-const reactjs = document.getElementById("reactjs-bar");
-reactjs.style.width = `${vreactjs_pct}%`;
-reactjs.style.height = "100%";
-const reactjsp = document.getElementById("reactjs-pct");
-reactjsp.textContent = `${vreactjs_pct}%`;
-
-const sql = document.getElementById("sql-bar");
-sql.style.width = `${vsql_pct}%`;
-sql.style.height = "100%";
-const sqlp = document.getElementById("sql-pct");
-sqlp.textContent = `${vsql_pct}%`;
-
-const excel = document.getElementById("excel-bar");
-excel.style.width = `${vexcel_pct}%`;
-excel.style.height = "100%";
-const excelp = document.getElementById("excel-pct");
-excelp.textContent = `${vexcel_pct}%`;
-
-const pbi = document.getElementById("pbi-bar");
-pbi.style.width = `${vpbi_pct}%`;
-pbi.style.height = "100%";
-const pbip = document.getElementById("pbi-pct");
-pbip.textContent = `${vpbi_pct}%`;
-
-// /CONHECIMENTOS

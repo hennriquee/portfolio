@@ -412,15 +412,12 @@ section {
   margin-top: 0.2rem;
 }
 
-#html-bar,
-#css-bar,
-#js-bar,
-#reactjs-bar,
-#bootstrap-bar,
-#pbi-bar,
-#excel-bar,
-#sql-bar {
+.bar-inner {
+  height: 100%;
   background-color: var(--white-color);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 2s ease;
 }
 
 .skills-item {
@@ -599,11 +596,6 @@ section {
 
 .experiences-container h2 {
   transition: 0.5s ease;
-}
-
-.experiences-box:hover {
-  border: 2px solid var(--primary-color);
-  transform: scale(1.01);
 }
 
 .experiences-box {
