@@ -182,7 +182,7 @@ section {
 }
 
 .typed-cursor {
-  color: #505050;
+  color: var(--primary-color);
   font-size: 2rem;
 }
 
@@ -303,12 +303,13 @@ section {
 }
 
 .skills-main {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   flex-direction: row;
   width: 100%;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 2rem;
+  margin: 2rem 0;
 }
 
 .skills-container {
@@ -397,36 +398,24 @@ section {
 }
 
 .skills-items {
-  display: flex;
-  text-align: left;
-  flex-direction: column;
-  width: 100%;
+  padding-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   height: 100%;
-  padding-top: 1rem;
+  justify-content: space-between;
+  padding-left: 3%;
 }
 
-.bar {
-  background-color: #c2c2c2;
-  height: 3px;
-  width: 100%;
-  margin-top: 0.2rem;
-}
-
-.bar-inner {
-  height: 100%;
-  background-color: var(--white-color);
-  transform-origin: left;
-  transform: scaleX(0);
-  transition: transform 2s ease;
-}
-
-.skills-item {
-  width: 100%;
-}
-
-.skill-title {
+.skill-item {
   display: flex;
-  gap: 0.1rem;
+  flex-direction: row;
+  gap: 5px;
+  align-items: start;
+}
+
+.skill-item i {
+  margin-top: 0.1rem;
+  font-size: 0.9rem;
 }
 
 .skills-box-back .btn {
@@ -442,23 +431,11 @@ section {
   box-shadow: 0 0 10px #ffffff44;
 }
 
-.skill-item p {
-  text-align: right;
-  font-size: 0.7rem;
-  font-weight: 100;
-}
-
 .skills-box-front-text {
   display: flex;
   align-items: center;
   height: 100%;
   width: 100%;
-}
-
-.skill-title {
-  display: flex;
-  flex-direction: row;
-  gap: 3px;
 }
 
 /* /SKILLS SECTION */
@@ -467,7 +444,7 @@ section {
 
 .services-container {
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
   height: 30%;
 }
 
@@ -846,6 +823,7 @@ footer i:hover {
   }
 
   .skills-main {
+    display: flex;
     flex-direction: column;
   }
 
@@ -936,6 +914,11 @@ footer i:hover {
 
   .home-content-elements {
     width: 100%;
+  }
+
+  .skills,
+  .experiences {
+    padding: 2rem 5rem;
   }
 }
 
@@ -1049,8 +1032,8 @@ footer i:hover {
     padding: 7rem 6rem;
   }
 
-  .skills-container {
-    flex-direction: row;
+  .skills-main {
+    display: grid;
   }
 
   .services-container {
@@ -1077,16 +1060,13 @@ footer i:hover {
   .contact form {
     padding: 0 30%;
   }
-  .skills-main {
-    flex-direction: row;
-  }
 
   .skills {
-    padding: 1rem 7.5rem;
+    padding: 1rem 3rem;
   }
 
   .experiences {
-    padding: 3rem 9rem;
+    padding: 3rem 3rem;
   }
 
   h1 {

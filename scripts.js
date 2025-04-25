@@ -21,18 +21,7 @@ function toggleMenu() {
 }
 // /Menu Hambúrguer
 
-// CONHECIMENTOS
-
-const valores = {
-  "html-bar": 80,
-  "css-bar": 50,
-  "js-bar": 10,
-  "bootstrap-bar": 50,
-  "reactjs-bar": 5,
-  "sql-bar": 25,
-  "pbi-bar": 80,
-  "excel-bar": 90,
-};
+// FLIP CARD SKILLS
 
 const buttons = document.querySelectorAll(".btn");
 
@@ -40,39 +29,10 @@ buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const container = e.target.closest(".skills-container");
     container.classList.toggle("flip");
-
-    if (container.classList.contains("flip")) {
-      container.querySelectorAll(".bar-inner").forEach((element) => {
-        const id = element.id;
-        const destino = valores[id];
-
-        element.style.transition = `transform ${destino * 0.025}s ease`;
-        element.style.transform = `scaleX(${destino / 100})`;
-
-        const textoPct = document.getElementById(id.replace("bar", "pct"));
-        let contador = 0;
-
-        const intervalo = setInterval(() => {
-          if (contador >= destino) {
-            clearInterval(intervalo);
-          } else {
-            contador++;
-            textoPct.textContent = contador + "%";
-          }
-        }, 20);
-      });
-    } else {
-      container.querySelectorAll(".bar-inner").forEach((element) => {
-        element.style.transform = "scaleX(0)";
-        element.style.transition = `transform ${
-          valores[element.id] * 0.025
-        }s ease`;
-      });
-    }
   });
 });
 
-// /CONHECIMENTOS
+// /FLIP CARD SKILLS
 
 // Evento que formata o campo de telefone conforme o usuário digita
 document.getElementById("telefone").addEventListener("input", function (event) {
