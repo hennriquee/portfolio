@@ -4,6 +4,13 @@ const nav = document.querySelector(".navbar-responsive");
 
 menuHamburguer.addEventListener("click", toggleMenu);
 
+window.addEventListener("click", ({ target }) => {
+  if (!nav.contains(target) && !menuHamburguer.contains(target)) {
+    nav.style.display = "none";
+    menuHamburguer.classList.remove("change");
+  }
+});
+
 function toggleMenu() {
   menuHamburguer.classList.toggle("change");
   nav.style.display = menuHamburguer.classList.contains("change")

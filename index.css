@@ -32,7 +32,8 @@ span {
 }
 
 h1,
-h2 {
+h2,
+#typed {
   cursor: default;
 }
 
@@ -130,7 +131,9 @@ header * {
 .navbar-responsive a {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  font-size: 1rem;
+  margin: 0.8rem;
+  padding: 0.5rem 0;
 }
 
 .navbar-responsive {
@@ -140,8 +143,7 @@ header * {
   left: 0;
   width: 100%;
   padding: 1rem;
-  background-color: var(--white-color);
-  border-bottom: 2px solid var(--primary-color);
+  background-color: #f7f7f7;
 }
 
 .menu-hamburguer {
@@ -184,6 +186,7 @@ section {
 .typed-cursor {
   color: var(--primary-color);
   font-size: 2rem;
+  cursor: default;
 }
 
 .typed-container {
