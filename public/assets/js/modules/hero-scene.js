@@ -23,6 +23,14 @@ function readColor(token) {
   return new THREE.Vector3(r / 255, g / 255, b / 255);
 }
 
+// Ajustes por tema: no claro, partículas escuras com mistura normal (a aditiva sumiria no fundo branco).
+const NORMAL_BLENDING = 1; // THREE.NormalBlending
+const THEME = {
+  dark: { blending: "additive", wave: 0.9, dust: 0.75 },
+  light: { blending: "normal", wave: 0.8, dust: 0.55 },
+};
+const currentTheme = () => (document.documentElement.dataset.theme === "light" ? "light" : "dark");
+
 const waveVertex = /* glsl */ `
   uniform float uTime;
   uniform float uPixelRatio;
@@ -209,6 +217,27 @@ export function initHeroScene(canvas, { reduceMotion = false } = {}) {
   dust.position.y = -1.6;
   scene.add(dust);
 
+  /* ---------- Tema ---------- */
+  let look = THEME[currentTheme()];
+  const applyTheme = () => {
+    look = THEME[currentTheme()];
+    waveUniforms.uColorLow.value = readColor("--glow");
+    waveUniforms.uColorMid.value = readColor("--accent");
+    waveUniforms.uColorHigh.value = readColor("--accent-2");
+    dustUniforms.uColor.value = readColor("--accent-2");
+    dustUniforms.uOpacity.value = look.dust;
+    const blending = look.blending === "normal" ? NORMAL_BLENDING : THREE.AdditiveBlending;
+    [wave.material, dust.material].forEach((material) => {
+      material.blending = blending;
+      material.needsUpdate = true;
+    });
+  };
+  applyTheme();
+  document.addEventListener("themechange", () => {
+    applyTheme();
+    if (!running) render(reduceMotion ? 4 : clock.getElapsedTime());
+  });
+
   /* ---------- Tamanho ---------- */
   const resize = () => {
     const w = canvas.clientWidth || hero.clientWidth;
@@ -269,7 +298,7 @@ export function initHeroScene(canvas, { reduceMotion = false } = {}) {
     camera.lookAt(lookTarget.x, lookTarget.y - scroll * 1.2, lookTarget.z);
     wave.rotation.y = Math.sin(time * 0.05) * 0.06;
 
-    waveUniforms.uOpacity.value = 0.9 * (1 - scroll * 0.7);
+    waveUniforms.uOpacity.value = look.wave * (1 - scroll * 0.7);
     renderer.render(scene, camera);
   };
 

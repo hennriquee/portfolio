@@ -202,9 +202,9 @@ export default async function handler(req, context) {
 
   if (req.method === "GET") {
     if (req.headers.get("sec-fetch-site") === "cross-site") {
-      return json(403, { ok: false, error: "Origem não autorizada." });
+      return json(403, { ok: false, code: "forbidden", error: "Origem não autorizada." });
     }
-    if (!secret) return json(503, { ok: false, error: "Envio indisponível." });
+    if (!secret) return json(503, { ok: false, code: "unavailable", error: "Envio indisponível." });
     return json(200, { ok: true, token: issueToken(secret) });
   }
 
@@ -212,25 +212,25 @@ export default async function handler(req, context) {
     return json(405, { ok: false, error: "Método não permitido." }, { Allow: "GET, POST" });
   }
   if (!isAllowedOrigin(req)) {
-    return json(403, { ok: false, error: "Origem não autorizada." });
+    return json(403, { ok: false, code: "forbidden", error: "Origem não autorizada." });
   }
   if (!String(req.headers.get("content-type") || "").includes("application/json")) {
-    return json(415, { ok: false, error: "Formato inválido." });
+    return json(415, { ok: false, code: "bad_request", error: "Formato inválido." });
   }
 
   let body;
   try {
     body = await readBody(req);
   } catch {
-    return json(400, { ok: false, error: "Requisição inválida." });
+    return json(400, { ok: false, code: "bad_request", error: "Requisição inválida." });
   }
   if (!body || typeof body !== "object" || Array.isArray(body)) {
-    return json(400, { ok: false, error: "Requisição inválida." });
+    return json(400, { ok: false, code: "bad_request", error: "Requisição inválida." });
   }
 
   if (!secret) {
     console.error("[contact] CONTACT_SECRET/SMTP_PASS não configurados.");
-    return json(500, { ok: false, error: "O envio por e-mail está indisponível no momento. Fale comigo direto:" });
+    return json(500, { ok: false, code: "unavailable", error: "O envio por e-mail está indisponível no momento. Fale comigo direto:" });
   }
 
   // Robôs: respondemos "ok" sem enviar nada, para não dar pistas.
@@ -242,26 +242,26 @@ export default async function handler(req, context) {
     return json(401, { ok: false, code: "token_expired", error: "Sua sessão expirou. Tente enviar novamente." });
   }
   if (tokenStatus !== "ok") {
-    return json(403, { ok: false, error: "Não foi possível validar o envio. Recarregue a página e tente novamente." });
+    return json(403, { ok: false, code: "token_invalid", error: "Não foi possível validar o envio. Recarregue a página e tente novamente." });
   }
 
   const ip = clientIp(req, context);
   if (isRateLimited(ip)) {
-    return json(429, { ok: false, error: "Muitas mensagens em pouco tempo. Tente novamente mais tarde ou fale comigo direto:" });
+    return json(429, { ok: false, code: "rate_limited", error: "Muitas mensagens em pouco tempo. Tente novamente mais tarde ou fale comigo direto:" });
   }
 
   const { data, fields } = validate(body);
   if (Object.keys(fields).length) {
-    return json(422, { ok: false, error: "Confira os campos destacados.", fields });
+    return json(422, { ok: false, code: "invalid", error: "Confira os campos destacados.", fields });
   }
 
   if (overDailyLimit()) {
-    return json(429, { ok: false, error: "Recebi muitas mensagens hoje. Fale comigo direto:" });
+    return json(429, { ok: false, code: "rate_limited", error: "Recebi muitas mensagens hoje. Fale comigo direto:" });
   }
 
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.error("[contact] SMTP_USER/SMTP_PASS não configurados.");
-    return json(500, { ok: false, error: "O envio por e-mail está indisponível no momento. Fale comigo direto:" });
+    return json(500, { ok: false, code: "unavailable", error: "O envio por e-mail está indisponível no momento. Fale comigo direto:" });
   }
 
   try {
@@ -269,7 +269,7 @@ export default async function handler(req, context) {
     return json(200, { ok: true });
   } catch (error) {
     console.error("[contact] Falha ao enviar:", error?.message);
-    return json(502, { ok: false, error: "Não foi possível enviar agora. Fale comigo direto:" });
+    return json(502, { ok: false, code: "send_failed", error: "Não foi possível enviar agora. Fale comigo direto:" });
   }
 }
 

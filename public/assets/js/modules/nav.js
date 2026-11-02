@@ -3,6 +3,7 @@
  * (com indicador deslizante) e menu mobile acessível.
  */
 import { bindAnchorLinks } from "./smooth-scroll.js";
+import { t } from "./i18n.js";
 
 export function initNav({ lenis, reduceMotion }) {
   const root = document.documentElement;
@@ -77,7 +78,9 @@ export function initNav({ lenis, reduceMotion }) {
     { rootMargin: "-45% 0px -50% 0px" },
   );
   [hero, ...sections].filter(Boolean).forEach((section) => observer.observe(section));
-  window.addEventListener("resize", () => moveIndicator(links.find((l) => l.classList.contains("is-active"))));
+  const refreshIndicator = () => moveIndicator(links.find((l) => l.classList.contains("is-active")));
+  window.addEventListener("resize", refreshIndicator);
+  document.fonts?.ready.then(refreshIndicator);
 
   /* ---------- Menu mobile ---------- */
   const setMenu = (open) => {
@@ -85,7 +88,7 @@ export function initNav({ lenis, reduceMotion }) {
     menu.classList.toggle("is-open", open);
     menu.inert = !open;
     toggle.setAttribute("aria-expanded", String(open));
-    toggle.setAttribute("aria-label", open ? "Fechar menu" : "Abrir menu");
+    toggle.setAttribute("aria-label", t(open ? "menu.close" : "menu.open"));
     root.classList.toggle("menu-open", open);
     blockers.forEach((el) => el && (el.inert = open));
     if (open) {
@@ -104,7 +107,14 @@ export function initNav({ lenis, reduceMotion }) {
       toggle.focus();
     }
   });
-  window.matchMedia("(min-width: 901px)").addEventListener("change", (e) => e.matches && setMenu(false));
+  window.matchMedia("(min-width: 1025px)").addEventListener("change", (e) => e.matches && setMenu(false));
+
+  // Troca de idioma: textos mudam de largura.
+  document.addEventListener("langchange", () => {
+    toggle?.setAttribute("aria-label", t(isOpen() ? "menu.close" : "menu.open"));
+    requestAnimationFrame(refreshIndicator);
+  });
+  toggle?.setAttribute("aria-label", t("menu.open"));
 
   bindAnchorLinks({ lenis, reduceMotion, onNavigate: () => isOpen() && setMenu(false) });
 }

@@ -5,6 +5,7 @@
  * e botão flutuante do WhatsApp.
  */
 import { emailAddress, whatsappUrl } from "../config.js";
+import { t, getLocale } from "./i18n.js";
 
 export function initInteractions({ reduceMotion }) {
   setupContactLinks();
@@ -15,6 +16,11 @@ export function initInteractions({ reduceMotion }) {
   if (!reduceMotion) setupMagnetic();
   setupWhatsappFab();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = String(new Date().getFullYear())));
+
+  document.addEventListener("langchange", () => {
+    updateContactLinks();
+    setupDurations();
+  });
 }
 
 /* ---------- Toast ---------- */
@@ -29,21 +35,32 @@ export function showToast(message) {
 }
 
 /* ---------- Links de WhatsApp e e-mail ---------- */
-function setupContactLinks() {
-  document.querySelectorAll("[data-whatsapp]").forEach((link) => (link.href = whatsappUrl()));
+function updateContactLinks() {
+  document.querySelectorAll("[data-whatsapp]").forEach((link) => (link.href = whatsappUrl(t("wa.msg"))));
+
+  // "Pedir orçamento": a mensagem cita o serviço do card, no idioma atual.
+  document.querySelectorAll("[data-wa-service]").forEach((link) => {
+    const service = link.closest(".service")?.querySelector(".service__title")?.textContent.trim();
+    link.href = whatsappUrl(service ? t("wa.service", { service }) : t("wa.msg"));
+  });
 
   const address = emailAddress();
-  const mailto = `mailto:${address}?subject=${encodeURIComponent("Contato pelo portfólio")}`;
+  const mailto = `mailto:${address}?subject=${encodeURIComponent(t("mail.subject"))}`;
   document.querySelectorAll("[data-email]").forEach((link) => {
     link.href = mailto;
     link.textContent = address;
   });
   document.querySelectorAll("[data-email-icon]").forEach((link) => (link.href = mailto));
+}
+
+function setupContactLinks() {
+  updateContactLinks();
+  const address = emailAddress();
 
   document.querySelectorAll("[data-copy-email]").forEach((button) => {
     button.addEventListener("click", async () => {
       const ok = await copyText(address);
-      showToast(ok ? "E-mail copiado!" : address);
+      showToast(ok ? t("toast.copied") : address);
       if (ok) {
         const use = button.querySelector("use");
         use?.setAttribute("href", "#i-check");
@@ -76,43 +93,57 @@ async function copyText(text) {
   }
 }
 
-/* ---------- Texto digitado no hero ---------- */
+/* ---------- Texto digitado no hero (reinicia ao trocar o idioma) ---------- */
 function setupTyper(reduceMotion) {
   const el = document.querySelector("[data-typer]");
   if (!el) return;
-  let words;
-  try {
-    words = JSON.parse(el.dataset.typer);
-  } catch {
-    return;
-  }
-  if (!Array.isArray(words) || words.length < 2) return;
+  const caret = el.parentElement.querySelector(".caret");
+  let timer = 0;
 
-  let index = 0;
-  if (reduceMotion) {
-    // Sem animação: mostra o primeiro papel fixo e esconde o cursor piscando.
-    el.textContent = words[0];
-    el.parentElement.querySelector(".caret")?.remove();
-    return;
-  }
-
-  let length = words[0].length;
-  let deleting = true;
-  const step = () => {
-    length += deleting ? -1 : 1;
-    el.textContent = words[index].slice(0, Math.max(0, length));
-    if (deleting && length <= 0) {
-      deleting = false;
-      index = (index + 1) % words.length;
-      return setTimeout(step, 320);
+  const readWords = () => {
+    try {
+      const words = JSON.parse(el.dataset.typer);
+      return Array.isArray(words) && words.length ? words : null;
+    } catch {
+      return null;
     }
-    if (!deleting && length >= words[index].length) {
-      deleting = true;
-      return setTimeout(step, 2600);
-    }
-    setTimeout(step, deleting ? 30 : 60);
   };
-  setTimeout(step, 3400);
+
+  const start = (delay) => {
+    clearTimeout(timer);
+    const words = readWords();
+    if (!words) return;
+    el.textContent = words[0];
+    if (reduceMotion || words.length < 2) {
+      // Sem animação: mostra o primeiro papel fixo e esconde o cursor piscando.
+      caret?.remove();
+      return;
+    }
+
+    let index = 0;
+    let length = words[0].length;
+    let deleting = true;
+    const step = () => {
+      length += deleting ? -1 : 1;
+      el.textContent = words[index].slice(0, Math.max(0, length));
+      if (deleting && length <= 0) {
+        deleting = false;
+        index = (index + 1) % words.length;
+        timer = setTimeout(step, 320);
+        return;
+      }
+      if (!deleting && length >= words[index].length) {
+        deleting = true;
+        timer = setTimeout(step, 2600);
+        return;
+      }
+      timer = setTimeout(step, deleting ? 30 : 60);
+    };
+    timer = setTimeout(step, delay);
+  };
+
+  start(3400);
+  document.addEventListener("langchange", () => start(2600));
 }
 
 /* ---------- Datas ---------- */
@@ -127,18 +158,28 @@ function formatDuration(months) {
   const years = Math.floor(months / 12);
   const rest = months % 12;
   const parts = [];
-  if (years) parts.push(`${years} ${years > 1 ? "anos" : "ano"}`);
-  if (rest) parts.push(`${rest} ${rest > 1 ? "meses" : "mês"}`);
-  return parts.join(" e ") || "1 mês";
+  if (years) parts.push(`${years} ${t(years > 1 ? "dur.years" : "dur.year")}`);
+  if (rest) parts.push(`${rest} ${t(rest > 1 ? "dur.months" : "dur.month")}`);
+  const and = t("dur.and");
+  return parts.join(and ? ` ${and} ` : " ") || `1 ${t("dur.month")}`;
 }
 
+function formatMonth(date) {
+  const month = new Intl.DateTimeFormat(getLocale(), { month: "short" }).format(date).replace(".", "");
+  return `${month} ${date.getFullYear()}`;
+}
+
+/** Período ("mar 2026 — atual") e duração de cada experiência, a partir de data-start / data-end. */
 function setupDurations() {
   const now = new Date();
-  document.querySelectorAll("[data-start]").forEach((el) => {
-    const start = parseMonth(el.dataset.start);
-    const end = el.dataset.end ? parseMonth(el.dataset.end) : now;
-    if (!start || !end || end < start) return;
-    el.textContent = formatDuration(monthsBetween(start, end));
+  document.querySelectorAll(".tl-item[data-start]").forEach((item) => {
+    const start = parseMonth(item.dataset.start);
+    const end = item.dataset.end ? parseMonth(item.dataset.end) : null;
+    if (!start || (end && end < start)) return;
+    const period = item.querySelector(".tl-period");
+    const duration = item.querySelector(".tl-duration");
+    if (period) period.textContent = `${formatMonth(start)} — ${end ? formatMonth(end) : t("period.present")}`;
+    if (duration) duration.textContent = formatDuration(monthsBetween(start, end || now));
   });
 }
 

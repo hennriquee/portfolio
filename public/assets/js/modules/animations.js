@@ -17,6 +17,13 @@ export function initAnimations({ reduceMotion }) {
   counters(gsap, ScrollTrigger);
   parallaxOrbs(gsap);
 
+  // Troca de idioma: os títulos ganham texto novo e precisam ser divididos de novo.
+  document.addEventListener("langchange", () => {
+    splitHeadings(gsap, { refresh: true });
+    scrubStatement(gsap);
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+  });
+
   // Recalcula posições quando fontes e imagens terminarem de carregar.
   document.fonts?.ready.then(() => ScrollTrigger.refresh());
   window.addEventListener("load", () => ScrollTrigger.refresh());
@@ -33,7 +40,6 @@ function heroIntro(gsap) {
   tl.fromTo(".hero__eyebrow", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1 })
     .to(lines, { yPercent: 0, stagger: 0.12, duration: 1.4 }, 0.1)
     .fromTo(".hero__role", { opacity: 0, y: 14 }, { opacity: 1, y: 0 }, 0.55)
-    .fromTo(".hero__quote", { opacity: 0, y: 14 }, { opacity: 1, y: 0 }, 0.65)
     .fromTo(".hero__actions > *", { opacity: 0, y: 16 }, { opacity: 1, y: 0, stagger: 0.08 }, 0.75)
     .fromTo(".avatar__frame", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 1.8 }, 0.2)
     .fromTo(".avatar-deco__inner", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 2 }, 0.4)
@@ -103,26 +109,43 @@ function splitWords(el, className) {
   return words;
 }
 
-function splitHeadings(gsap) {
+const headingState = new WeakMap();
+
+function splitHeadings(gsap, { refresh = false } = {}) {
   document.querySelectorAll("[data-split]").forEach((heading) => {
+    const previous = headingState.get(heading);
+    previous?.tween?.scrollTrigger?.kill();
+    previous?.tween?.kill();
+    // Já apareceu (ou já passou da tela)? Ao trocar o idioma, mostra direto, sem repetir a animação.
+    const shown = refresh && (previous?.revealed || heading.getBoundingClientRect().top < window.innerHeight * 0.88);
+
     const words = splitWords(heading, "sw");
-    gsap.set(words, { yPercent: 115 });
     heading.style.visibility = "visible";
-    gsap.to(words, {
+    const state = { revealed: shown, tween: null };
+    headingState.set(heading, state);
+    if (shown) return;
+
+    gsap.set(words, { yPercent: 115 });
+    state.tween = gsap.to(words, {
       yPercent: 0,
       duration: 1.2,
       ease: "expo.out",
       stagger: 0.06,
-      scrollTrigger: { trigger: heading, start: "top 88%", once: true },
+      scrollTrigger: { trigger: heading, start: "top 88%", once: true, onEnter: () => (state.revealed = true) },
     });
   });
 }
 
 /* ---------- Texto de destaque que "acende" palavra por palavra ---------- */
+const scrubTweens = new WeakMap();
+
 function scrubStatement(gsap) {
   document.querySelectorAll("[data-scrub-words]").forEach((el) => {
+    const previous = scrubTweens.get(el);
+    previous?.scrollTrigger?.kill();
+    previous?.kill();
     const words = splitWords(el, "word");
-    gsap.fromTo(
+    const tween = gsap.fromTo(
       words,
       { opacity: 0.16 },
       {
@@ -132,6 +155,7 @@ function scrubStatement(gsap) {
         scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: 0.6 },
       },
     );
+    scrubTweens.set(el, tween);
   });
 }
 

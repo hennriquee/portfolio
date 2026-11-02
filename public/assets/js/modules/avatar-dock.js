@@ -107,6 +107,7 @@ function floatingMode(avatar, origin, target) {
     resizeTimer = setTimeout(measure, 120);
   };
   window.addEventListener("resize", remeasure);
+  document.addEventListener("langchange", remeasure);
   window.addEventListener("load", measure);
   document.fonts?.ready.then(measure);
   measure();
@@ -173,6 +174,7 @@ function handoffMode(avatar, origin, target) {
     lastWidth = window.innerWidth;
     measure();
   });
+  document.addEventListener("langchange", () => requestAnimationFrame(measure));
   window.addEventListener("load", measure);
   document.fonts?.ready.then(measure);
   measure();

@@ -3,7 +3,7 @@
    ---------------------------------------------------------------------
    Para trocar a cor do site inteiro, altere APENAS a variável --brand.
    Fundo, superfícies, destaques, brilhos e até a animação 3D do hero
-   são calculados automaticamente a partir dela.
+   são calculados automaticamente a partir dela — nos temas escuro e claro.
    ===================================================================== */
 
 :root {
@@ -29,8 +29,14 @@
   --ok: #34d399;
   --danger: #f87171;
   --whatsapp: #25d366;
+}
 
-  /* Cores derivadas — versão compatível com navegadores mais antigos */
+/* ---------- Tema escuro (padrão) ---------- */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Versão compatível com navegadores mais antigos */
   --bg: color-mix(in srgb, var(--brand) 20%, #02040a);
   --bg-elev: color-mix(in srgb, var(--brand) 30%, #03060f);
   --surface: color-mix(in srgb, var(--brand) 42%, #060a16);
@@ -43,11 +49,28 @@
   --accent-strong: color-mix(in srgb, var(--brand) 40%, #3b6bff);
   --accent-2: color-mix(in srgb, var(--brand) 15%, #7ddcf2);
   --glow: color-mix(in srgb, var(--brand) 55%, #2f5bff);
+
+  /* Tons da marca usados em faixas e fundos */
+  --tint-page: color-mix(in srgb, var(--brand) 22%, transparent);
+  --tint-hero: color-mix(in srgb, var(--brand) 70%, transparent);
+  --tint-band: color-mix(in srgb, var(--brand) 38%, transparent);
+  --tint-card: color-mix(in srgb, var(--brand) 55%, transparent);
+  --tint-icon: color-mix(in srgb, var(--brand) 45%, transparent);
+  --footer-end: color-mix(in srgb, var(--brand) 55%, var(--bg));
+
+  /* Sombras e textos de status */
+  --shadow: rgb(0 0 0 / 0.7);
+  --shadow-soft: rgb(0 0 0 / 0.45);
+  --highlight: rgb(255 255 255 / 0.04);
+  --ok-text: color-mix(in srgb, var(--ok) 70%, white);
+  --danger-text: color-mix(in srgb, var(--danger) 70%, white);
+  --noise-opacity: 0.035;
 }
 
-/* Cores derivadas — versão moderna (mantém o tom exato da marca) */
+/* Versão moderna (mantém o tom exato da marca) */
 @supports (color: oklch(from red l c h)) {
-  :root {
+  :root,
+  :root[data-theme="dark"] {
     --bg: oklch(from var(--brand) 0.14 calc(c * 0.5) h);
     --bg-elev: oklch(from var(--brand) 0.175 calc(c * 0.65) h);
     --surface: oklch(from var(--brand) 0.215 calc(c * 0.8) h);
@@ -60,5 +83,54 @@
     --accent-strong: oklch(from var(--brand) 0.56 max(c, 0.19) h);
     --accent-2: oklch(from var(--brand) 0.85 0.11 calc(h - 55));
     --glow: oklch(from var(--brand) 0.5 max(c, 0.2) h);
+  }
+}
+
+/* ---------- Tema claro ---------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: color-mix(in srgb, var(--brand) 3%, #fbfcff);
+  --bg-elev: color-mix(in srgb, var(--brand) 5%, #f6f8fd);
+  --surface: #ffffff;
+  --surface-2: color-mix(in srgb, var(--brand) 8%, #f1f4fb);
+  --line: color-mix(in srgb, var(--brand) 14%, transparent);
+  --text: color-mix(in srgb, var(--brand) 70%, #05070d);
+  --text-muted: color-mix(in srgb, var(--brand) 40%, #3d4458);
+  --text-dim: color-mix(in srgb, var(--brand) 25%, #6b7389);
+  --accent: color-mix(in srgb, var(--brand) 45%, #2457e6);
+  --accent-strong: color-mix(in srgb, var(--brand) 55%, #1f4fd8);
+  --accent-2: color-mix(in srgb, var(--brand) 20%, #0e8aa8);
+  --glow: color-mix(in srgb, var(--brand) 25%, #6f95ff);
+
+  --tint-page: color-mix(in srgb, var(--brand) 7%, transparent);
+  --tint-hero: color-mix(in srgb, var(--brand) 10%, transparent);
+  --tint-band: color-mix(in srgb, var(--brand) 5%, transparent);
+  --tint-card: color-mix(in srgb, var(--brand) 7%, transparent);
+  --tint-icon: color-mix(in srgb, var(--brand) 8%, transparent);
+  --footer-end: color-mix(in srgb, var(--brand) 9%, var(--bg));
+
+  --shadow: color-mix(in srgb, var(--brand) 22%, transparent);
+  --shadow-soft: color-mix(in srgb, var(--brand) 14%, transparent);
+  --highlight: rgb(255 255 255 / 0.7);
+  --ok-text: #047857;
+  --danger-text: #b42318;
+  --noise-opacity: 0.02;
+}
+
+@supports (color: oklch(from red l c h)) {
+  :root[data-theme="light"] {
+    --bg: oklch(from var(--brand) 0.985 0.006 h);
+    --bg-elev: oklch(from var(--brand) 0.97 0.01 h);
+    --surface: oklch(from var(--brand) 1 0 h);
+    --surface-2: oklch(from var(--brand) 0.945 0.018 h);
+    --line: oklch(from var(--brand) 0.35 calc(c * 0.6) h / 0.13);
+    --text: oklch(from var(--brand) 0.2 calc(c * 0.6) h);
+    --text-muted: oklch(from var(--brand) 0.4 0.04 h);
+    --text-dim: oklch(from var(--brand) 0.53 0.035 h);
+    --accent: oklch(from var(--brand) 0.47 max(c, 0.17) h);
+    --accent-strong: oklch(from var(--brand) 0.42 max(c, 0.19) h);
+    --accent-2: oklch(from var(--brand) 0.52 0.1 calc(h - 55));
+    --glow: oklch(from var(--brand) 0.72 0.13 h);
   }
 }

@@ -3,23 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Bruno Henrique — Desenvolvimento, Dados & BI</title>
+    <title data-i18n="meta.title">Bruno Henrique — Desenvolvimento, Dados &amp; BI</title>
     <meta
       name="description"
-      content="Portfólio de Bruno Henrique: desenvolvimento web, engenharia e análise de dados, BI e automação. JavaScript, React, Node.js, SQL, ClickHouse, PySpark e Power BI."
+      data-i18n-attr="content:meta.desc"
+      content="Portfólio de Bruno Henrique: desenvolvimento fullstack, engenharia e análise de dados, BI e automação. JavaScript, React, Node.js, SQL, ClickHouse, PySpark e Power BI."
     />
     <meta name="author" content="Bruno Henrique" />
     <meta name="theme-color" content="#050b1c" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
 
     <!-- Compartilhamento (WhatsApp, LinkedIn etc.) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:title" content="Bruno Henrique — Desenvolvimento, Dados & BI" />
-    <meta
-      property="og:description"
-      content="Transformo dados em produtos e decisões — do banco de dados à interface."
-    />
+    <meta property="og:title" content="Bruno Henrique — Desenvolvimento, Dados &amp; BI" />
+    <meta property="og:description" content="Transformo dados em produtos e decisões — do banco de dados à interface." />
     <meta property="og:image" content="assets/img/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -38,6 +36,7 @@
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
 
+    <!-- Define tema e idioma antes da primeira pintura (sem "piscar") -->
     <script src="assets/js/boot.js"></script>
 
     <script type="application/ld+json">
@@ -45,7 +44,7 @@
         "@context": "https://schema.org",
         "@type": "Person",
         "name": "Bruno Henrique Martins da Silva",
-        "jobTitle": "Desenvolvedor e Analista de Dados",
+        "jobTitle": "Desenvolvedor Fullstack e Analista de Dados",
         "address": { "@type": "PostalAddress", "addressLocality": "Uberlândia", "addressRegion": "MG", "addressCountry": "BR" },
         "sameAs": ["https://github.com/hennriquee"]
       }
@@ -53,9 +52,9 @@
   </head>
 
   <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link" href="#conteudo" data-i18n="a11y.skip">Pular para o conteúdo</a>
 
-    <!-- Ícones (sprite SVG) -->
+    <!-- Ícones de interface (sprite SVG). Os logos das tecnologias ficam em assets/img/tech-icons.svg -->
     <svg class="sprite" aria-hidden="true" focusable="false">
       <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></symbol>
       <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14a9 3 0 0 0 18 0V5" /><path d="M3 12a9 3 0 0 0 18 0" /></symbol>
@@ -66,7 +65,6 @@
       <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" /></symbol>
       <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M12 3c.6 4.6 3.4 7.4 8 8-4.6.6-7.4 3.4-8 8-.6-4.6-3.4-7.4-8-8 4.6-.6 7.4-3.4 8-8Z" /><path d="M19 3v4" /><path d="M21 5h-4" /></symbol>
       <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7" /><path d="M7 7h10v10" /></symbol>
-      <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14" /><path d="m19 12-7 7-7-7" /></symbol>
       <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7" /><path d="M12 19V5" /></symbol>
       <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><path d="M12 15V3" /></symbol>
       <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z" /><path d="M22 2 11 13" /></symbol>
@@ -77,6 +75,20 @@
       <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /><path d="M22 10v6" /></symbol>
       <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" /><path d="M14 2v6h6" /><path d="M16 13H8" /><path d="M16 17H8" /></symbol>
       <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" /></symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6" /></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></symbol>
+      <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9" /><path d="M3 9h18v1a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0Z" /><path d="M5 12.5V21h14v-8.5" /><path d="M10 21v-5h4v5" /></symbol>
+      <symbol id="i-id" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><circle cx="9" cy="11" r="2.5" /><path d="M5.5 17a3.5 3.5 0 0 1 7 0" /><path d="M15 9h4" /><path d="M15 13h3" /></symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1" /><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /><path d="m9 14 2 2 4-4" /></symbol>
+      <symbol id="i-dashboard" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1" /><rect x="14" y="3" width="7" height="5" rx="1" /><rect x="14" y="12" width="7" height="9" rx="1" /><rect x="3" y="16" width="7" height="5" rx="1" /></symbol>
+      <symbol id="i-trending" viewBox="0 0 24 24"><path d="m22 7-8.5 8.5-5-5L2 17" /><path d="M16 7h6v6" /></symbol>
+      <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M3 15h18" /><path d="M9 3v18" /></symbol>
+      <symbol id="i-presentation" viewBox="0 0 24 24"><path d="M2 3h20" /><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /><path d="m7 21 5-5 5 5" /><path d="M8 11l3-3 2 2 3-3" /></symbol>
+      <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></symbol>
+      <symbol id="i-gantt" viewBox="0 0 24 24"><path d="M3 3v18h18" /><path d="M7 7h6" /><path d="M10 11h7" /><path d="M8 15h5" /></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /><path d="M9 18h6" /><path d="M10 22h4" /></symbol>
       <symbol id="i-github" viewBox="0 0 24 24"><path class="fill" d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3" /></symbol>
       <symbol id="i-whatsapp" viewBox="0 0 24 24"><path class="fill" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z" /></symbol>
     </svg>
@@ -84,21 +96,42 @@
     <!-- ===================== NAVBAR ===================== -->
     <header class="nav" data-nav>
       <div class="nav__inner container">
-        <a href="#inicio" class="nav__brand" aria-label="Bruno Henrique — voltar ao início">
+        <a href="#inicio" class="nav__brand" aria-label="Bruno Henrique — voltar ao início" data-i18n-attr="aria-label:nav.home">
           <span class="nav__avatar-slot" data-avatar-target aria-hidden="true"></span>
           <span class="nav__name">Bruno Henrique<span class="accent">.</span></span>
         </a>
 
-        <nav class="nav__links" aria-label="Seções">
+        <nav class="nav__links" aria-label="Seções" data-i18n-attr="aria-label:nav.sections">
           <span class="nav__indicator" aria-hidden="true"></span>
-          <a class="nav__link" href="#sobre" data-nav-link>Sobre</a>
-          <a class="nav__link" href="#habilidades" data-nav-link>Habilidades</a>
-          <a class="nav__link" href="#experiencia" data-nav-link>Experiência</a>
-          <a class="nav__link" href="#contato" data-nav-link>Contato</a>
+          <a class="nav__link" href="#sobre" data-nav-link data-i18n="nav.about">Sobre</a>
+          <a class="nav__link" href="#habilidades" data-nav-link data-i18n="nav.skills">Habilidades</a>
+          <a class="nav__link" href="#projetos" data-nav-link data-i18n="nav.projects">Projetos</a>
+          <a class="nav__link" href="#experiencia" data-nav-link data-i18n="nav.experience">Experiência</a>
+          <a class="nav__link" href="#servicos" data-nav-link data-i18n="nav.services">Serviços</a>
+          <a class="nav__link" href="#contato" data-nav-link data-i18n="nav.contact">Contato</a>
         </nav>
 
+        <div class="nav__tools" data-requires-js>
+          <div class="lang" data-lang-menu>
+            <button class="tool-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="lang-list" aria-label="Mudar idioma" data-i18n-attr="aria-label:lang.change">
+              <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+              <span data-lang-current>PT</span>
+              <svg class="icon tool-btn__chev" aria-hidden="true"><use href="#i-chevron-down" /></svg>
+            </button>
+            <div class="lang__menu" id="lang-list" role="menu">
+              <button class="lang__option" type="button" role="menuitemradio" aria-checked="true" data-set-lang="pt" lang="pt-BR">Português <span class="mono">PT</span></button>
+              <button class="lang__option" type="button" role="menuitemradio" aria-checked="false" data-set-lang="en" lang="en">English <span class="mono">EN</span></button>
+              <button class="lang__option" type="button" role="menuitemradio" aria-checked="false" data-set-lang="es" lang="es">Español <span class="mono">ES</span></button>
+            </div>
+          </div>
+          <button class="tool-btn tool-btn--icon theme-toggle" type="button" data-theme-toggle aria-label="Ativar tema claro">
+            <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun" /></svg>
+            <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon" /></svg>
+          </button>
+        </div>
+
         <a class="btn btn--primary btn--sm nav__cta" href="#contato" data-magnetic>
-          Fale comigo
+          <span data-i18n="nav.cta">Fale comigo</span>
           <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
         </a>
 
@@ -111,26 +144,42 @@
 
     <div class="mobile-menu" id="menu-mobile" inert>
       <nav class="mobile-menu__links" aria-label="Menu">
-        <a href="#sobre"><span class="mono">01</span>Sobre</a>
-        <a href="#habilidades"><span class="mono">02</span>Habilidades</a>
-        <a href="#experiencia"><span class="mono">03</span>Experiência</a>
-        <a href="#contato"><span class="mono">04</span>Contato</a>
+        <a href="#sobre"><span class="mono">01</span><span data-i18n="nav.about">Sobre</span></a>
+        <a href="#habilidades"><span class="mono">02</span><span data-i18n="nav.skills">Habilidades</span></a>
+        <a href="#projetos"><span class="mono">03</span><span data-i18n="nav.projects">Projetos</span></a>
+        <a href="#experiencia"><span class="mono">04</span><span data-i18n="nav.experience">Experiência</span></a>
+        <a href="#servicos"><span class="mono">05</span><span data-i18n="nav.services">Serviços</span></a>
+        <a href="#contato"><span class="mono">06</span><span data-i18n="nav.contact">Contato</span></a>
       </nav>
       <div class="mobile-menu__foot">
-        <a class="btn btn--whatsapp" href="https://wa.me/5534996560351?text=Ol%C3%A1%2C%20Bruno!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer" data-whatsapp>
-          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg>
-          Chamar no WhatsApp
-        </a>
-        <a class="btn btn--ghost" href="https://github.com/hennriquee" target="_blank" rel="noopener noreferrer">
-          <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
-          GitHub
-        </a>
+        <div class="mobile-menu__tools" data-requires-js>
+          <div class="seg" role="group" aria-label="Idioma" data-i18n-attr="aria-label:lang.label">
+            <button type="button" data-set-lang="pt" aria-pressed="true" lang="pt-BR" aria-label="Português">PT</button>
+            <button type="button" data-set-lang="en" aria-pressed="false" lang="en" aria-label="English">EN</button>
+            <button type="button" data-set-lang="es" aria-pressed="false" lang="es" aria-label="Español">ES</button>
+          </div>
+          <button class="tool-btn theme-toggle" type="button" data-theme-toggle>
+            <svg class="icon i-sun" aria-hidden="true"><use href="#i-sun" /></svg>
+            <svg class="icon i-moon" aria-hidden="true"><use href="#i-moon" /></svg>
+            <span data-theme-label>Tema claro</span>
+          </button>
+        </div>
+        <div class="mobile-menu__buttons">
+          <a class="btn btn--whatsapp" href="https://wa.me/5534996560351?text=Ol%C3%A1%2C%20Bruno!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer" data-whatsapp>
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+            WhatsApp
+          </a>
+          <a class="btn btn--ghost" href="https://github.com/hennriquee" target="_blank" rel="noopener noreferrer">
+            <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
+            GitHub
+          </a>
+        </div>
       </div>
     </div>
 
     <main id="conteudo">
       <!-- ===================== HERO ===================== -->
-      <section class="hero" id="inicio" aria-label="Apresentação">
+      <section class="hero" id="inicio" aria-label="Apresentação" data-i18n-attr="aria-label:hero.aria">
         <div class="hero__bg" aria-hidden="true"></div>
         <canvas class="hero__canvas" aria-hidden="true" data-hero-canvas></canvas>
 
@@ -138,34 +187,31 @@
           <div class="hero__text">
             <p class="eyebrow hero__eyebrow">
               <span class="pulse" aria-hidden="true"></span>
-              Uberlândia, MG<span class="eyebrow__extra"> <span class="eyebrow__sep" aria-hidden="true">/</span> Dados &amp; Desenvolvimento</span>
+              <span>Uberlândia, MG</span>
+              <span class="eyebrow__sep" aria-hidden="true">/</span>
+              <span data-i18n="hero.eyebrow">Desenvolvimento &amp; Dados</span>
             </p>
 
             <h1 class="hero__title">
-              <span class="line"><span>Olá, eu sou</span></span>
+              <span class="line"><span data-i18n="hero.hello">Olá, eu sou</span></span>
               <span class="line"><span class="gradient-text">Bruno Henrique</span></span>
             </h1>
 
             <p class="hero__role">
               <span class="hero__prompt" aria-hidden="true">&gt;_</span>
-              <span class="sr-only">Desenvolvedor Web Full Stack, Analista de Dados e especialista em BI &amp; Analytics.</span>
-              <span class="typer" aria-hidden="true" data-typer='["Desenvolvedor Web Full Stack","Analista de Dados","BI & Analytics"]'>Desenvolvedor Web Full Stack</span>
+              <span class="sr-only" data-i18n="hero.rolesSr">Desenvolvedor Fullstack, Analista de Dados e especialista em BI &amp; Analytics.</span>
+              <span class="typer" aria-hidden="true" data-typer='["Desenvolvedor Fullstack","Analista de Dados","BI & Analytics"]' data-i18n-typer="hero.roles">Desenvolvedor Fullstack</span>
               <span class="caret" aria-hidden="true"></span>
             </p>
 
-            <blockquote class="hero__quote">
-              <p>“O coração do sábio adquire o conhecimento, e o ouvido dos sábios procura o saber.”</p>
-              <cite>Provérbios 18:15</cite>
-            </blockquote>
-
             <div class="hero__actions">
               <a class="btn btn--primary" href="#contato" data-magnetic>
-                Vamos conversar
+                <span data-i18n="hero.cta">Vamos conversar</span>
                 <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
               </a>
               <a class="btn btn--ghost" href="assets/docs/curriculo-bruno-henrique.pdf" download="Curriculo-Bruno-Henrique.pdf" data-magnetic>
                 <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-                Baixar currículo
+                <span data-i18n="cv.download">Baixar currículo</span>
               </a>
             </div>
           </div>
@@ -177,10 +223,11 @@
                   <span class="avatar-deco__glow"></span>
                   <span class="avatar-deco__ring ring-1"></span>
                   <span class="avatar-deco__ring ring-2"></span>
-                  <span class="orbit-chip chip-1"><i></i>SQL</span>
-                  <span class="orbit-chip chip-2"><i></i>React</span>
-                  <span class="orbit-chip chip-3"><i></i>Power BI</span>
-                  <span class="orbit-chip chip-4"><i></i>Node.js</span>
+                  <!-- As tecnologias destes chips trocam sozinhas (ver modules/orbit.js) -->
+                  <span class="orbit-chip chip-1" data-orbit-chip><span class="orbit-chip__swap"><svg class="tech-ico"><use href="#t-react" /></svg><span>React</span></span></span>
+                  <span class="orbit-chip chip-2" data-orbit-chip><span class="orbit-chip__swap"><svg class="tech-ico"><use href="#t-nodejs" /></svg><span>Node.js</span></span></span>
+                  <span class="orbit-chip chip-3" data-orbit-chip><span class="orbit-chip__swap"><svg class="tech-ico"><use href="#t-powerbi" /></svg><span>Power BI</span></span></span>
+                  <span class="orbit-chip chip-4" data-orbit-chip><span class="orbit-chip__swap"><svg class="tech-ico"><use href="#t-python" /></svg><span>Python</span></span></span>
                 </div>
               </div>
 
@@ -196,9 +243,9 @@
           </div>
         </div>
 
-        <a class="hero__scroll" href="#sobre" aria-label="Rolar para a seção Sobre">
+        <a class="hero__scroll" href="#sobre" aria-label="Rolar para a seção Sobre" data-i18n-attr="aria-label:hero.scrollAria">
           <span class="hero__scroll-mouse" aria-hidden="true"><span></span></span>
-          <span class="mono">role para explorar</span>
+          <span class="mono" data-i18n="hero.scroll">role para explorar</span>
         </a>
       </section>
 
@@ -207,29 +254,29 @@
         <span class="orb orb--a" aria-hidden="true"></span>
         <div class="container">
           <header class="section-head">
-            <span class="kicker"><span class="kicker__num">01</span> Sobre mim</span>
-            <h2 class="section-title" data-split>Do banco de dados à <em>interface.</em></h2>
+            <span class="kicker"><span class="kicker__num">01</span> <span data-i18n="about.kicker">Sobre mim</span></span>
+            <h2 class="section-title" data-split data-i18n="about.title">Do banco de dados à <em>interface.</em></h2>
           </header>
 
           <div class="about__grid">
-            <p class="about__statement" data-scrub-words>
+            <p class="about__statement" data-scrub-words data-i18n="about.statement">
               Transformo dados em <em>produtos</em> e <em>decisões</em> — unindo engenharia de software, análise de dados e
               design de interfaces para entregar soluções claras, rápidas e úteis.
             </p>
 
             <div class="about__body">
-              <p data-reveal>
-                Sou desenvolvedor e analista de dados. Trabalho na interseção entre <strong>tecnologia e negócio</strong>,
+              <p data-reveal data-i18n="about.p1">
+                Sou desenvolvedor fullstack e analista de dados. Trabalho na interseção entre <strong>tecnologia e negócio</strong>,
                 construindo produtos de dados completos: tratamento e modelagem de grandes volumes com
                 <strong>SQL e PySpark</strong>, <strong>APIs em Node.js</strong> conectadas a bancos analíticos como o
                 ClickHouse e interfaces web <strong>responsivas</strong> em JavaScript e React.
               </p>
-              <p data-reveal>
+              <p data-reveal data-i18n="about.p2">
                 Desenvolvo <strong>dashboards e indicadores</strong> em Power BI, Chart.js e outras ferramentas de BI,
                 sempre com foco em clareza: a informação certa, no formato certo, para quem precisa decidir. Também automatizo tarefas
                 repetitivas com <strong>Python</strong> e levo projetos até a publicação com Git e serviços de nuvem.
               </p>
-              <p data-reveal>
+              <p data-reveal data-i18n="about.p3">
                 Sou detalhista, comunicativo e apaixonado por aprender. Gosto de reconhecer padrões, resolver problemas e
                 apresentar resultados de forma simples para quem precisa deles.
               </p>
@@ -237,12 +284,12 @@
               <div class="soft" data-reveal>
                 <span class="soft__title mono">// soft skills</span>
                 <ul class="chips">
-                  <li class="chip">Lógica de programação</li>
-                  <li class="chip">Comunicação</li>
-                  <li class="chip">Apresentação</li>
-                  <li class="chip">Reconhecimento de padrões</li>
-                  <li class="chip">Resolução de problemas</li>
-                  <li class="chip">Aprendizado contínuo</li>
+                  <li class="chip" data-i18n="soft.logic">Lógica de programação</li>
+                  <li class="chip" data-i18n="soft.comm">Comunicação</li>
+                  <li class="chip" data-i18n="soft.present">Apresentação</li>
+                  <li class="chip" data-i18n="soft.patterns">Reconhecimento de padrões</li>
+                  <li class="chip" data-i18n="soft.problems">Resolução de problemas</li>
+                  <li class="chip" data-i18n="soft.learning">Aprendizado contínuo</li>
                 </ul>
               </div>
             </div>
@@ -251,27 +298,28 @@
           <ul class="stats">
             <li class="stat card" data-reveal data-spotlight>
               <span class="stat__value"><span data-count data-years-since="2024-05">2</span>+</span>
-              <span class="stat__label">anos trabalhando com dados</span>
+              <span class="stat__label" data-i18n="stats.years">anos trabalhando com dados</span>
             </li>
             <li class="stat card" data-reveal data-spotlight>
               <span class="stat__value"><span data-count data-tech-count>35</span>+</span>
-              <span class="stat__label">ferramentas e tecnologias no repertório</span>
+              <span class="stat__label" data-i18n="stats.tech">ferramentas e tecnologias no repertório</span>
             </li>
             <li class="stat card" data-reveal data-spotlight>
               <span class="stat__value"><span data-count data-xp-count>4</span></span>
-              <span class="stat__label">experiências profissionais desde 2023</span>
+              <span class="stat__label" data-i18n="stats.xp">experiências profissionais desde 2023</span>
             </li>
           </ul>
         </div>
       </section>
 
       <!-- ===================== HABILIDADES ===================== -->
+      <!-- data-tech="react" coloca o logo da tecnologia no chip (ver assets/img/tech-icons.svg) -->
       <section class="section skills" id="habilidades">
         <div class="container">
           <header class="section-head">
-            <span class="kicker"><span class="kicker__num">02</span> Habilidades</span>
-            <h2 class="section-title" data-split>Stack para construir <em>de ponta a ponta.</em></h2>
-            <p class="section-sub" data-reveal>
+            <span class="kicker"><span class="kicker__num">02</span> <span data-i18n="skills.kicker">Habilidades</span></span>
+            <h2 class="section-title" data-split data-i18n="skills.title">Stack para construir <em>de ponta a ponta.</em></h2>
+            <p class="section-sub" data-reveal data-i18n="skills.sub">
               Ferramentas que uso para levar uma ideia do dado bruto até uma interface pronta para uso.
             </p>
           </header>
@@ -280,132 +328,132 @@
             <article class="skill skill--lg card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-code" /></svg></span>
-                <h3 class="skill__title">Desenvolvimento Web</h3>
+                <h3 class="skill__title" data-i18n="skills.web.title">Desenvolvimento Web</h3>
               </div>
-              <p class="skill__desc">Aplicações web e PWAs rápidas, responsivas e acessíveis — do layout à integração com APIs.</p>
+              <p class="skill__desc" data-i18n="skills.web.desc">Aplicações web e PWAs rápidas, responsivas e acessíveis — do layout à integração com APIs.</p>
               <div class="code-window" aria-hidden="true">
                 <div class="code-window__bar"><i></i><i></i><i></i><span>dashboard.js</span></div>
 <pre><code><span class="tk-k">const</span> kpis = <span class="tk-k">await</span> <span class="tk-f">fetch</span>(<span class="tk-s">'/api/kpis'</span>).<span class="tk-f">then</span>(r =&gt; r.<span class="tk-f">json</span>());
 <span class="tk-k">new</span> <span class="tk-f">Chart</span>(ctx, { type: <span class="tk-s">'line'</span>, data: kpis });<span class="code-caret"></span></code></pre>
               </div>
               <ul class="chips">
-                <li class="chip">JavaScript</li>
-                <li class="chip">React</li>
-                <li class="chip">Node.js</li>
-                <li class="chip">PWA</li>
-                <li class="chip">HTML &amp; CSS</li>
+                <li class="chip" data-tech="javascript">JavaScript</li>
+                <li class="chip" data-tech="react">React</li>
+                <li class="chip" data-tech="nodejs">Node.js</li>
+                <li class="chip" data-tech="pwa">PWA</li>
+                <li class="chip" data-tech="html">HTML &amp; CSS</li>
               </ul>
             </article>
 
             <article class="skill skill--md card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-database" /></svg></span>
-                <h3 class="skill__title">Engenharia &amp; Análise de Dados</h3>
+                <h3 class="skill__title" data-i18n="skills.data.title">Engenharia &amp; Análise de Dados</h3>
               </div>
-              <p class="skill__desc">Tratamento, combinação e modelagem de grandes volumes de dados com foco em performance.</p>
+              <p class="skill__desc" data-i18n="skills.data.desc">Tratamento, combinação e modelagem de grandes volumes de dados com foco em performance.</p>
               <div class="mini-chart" aria-hidden="true">
                 <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
               <ul class="chips">
-                <li class="chip">SQL</li>
-                <li class="chip">ClickHouse</li>
-                <li class="chip">PySpark</li>
-                <li class="chip">Databricks</li>
-                <li class="chip">MongoDB</li>
-                <li class="chip">DBeaver</li>
+                <li class="chip" data-tech="i-database">SQL</li>
+                <li class="chip" data-tech="clickhouse">ClickHouse</li>
+                <li class="chip" data-tech="spark">PySpark</li>
+                <li class="chip" data-tech="databricks">Databricks</li>
+                <li class="chip" data-tech="mongodb">MongoDB</li>
+                <li class="chip" data-tech="dbeaver">DBeaver</li>
               </ul>
             </article>
 
             <article class="skill card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-chart" /></svg></span>
-                <h3 class="skill__title">BI &amp; Visualização</h3>
+                <h3 class="skill__title" data-i18n="skills.bi.title">BI &amp; Visualização</h3>
               </div>
-              <p class="skill__desc">Dashboards e indicadores interativos, claros e fáceis de ler para qualquer público.</p>
+              <p class="skill__desc" data-i18n="skills.bi.desc">Dashboards e indicadores interativos, claros e fáceis de ler para qualquer público.</p>
               <ul class="chips">
-                <li class="chip">Power BI</li>
-                <li class="chip">Chart.js</li>
-                <li class="chip">Cube.js</li>
-                <li class="chip">Metabase</li>
-                <li class="chip">Looker Studio</li>
-                <li class="chip">Gaio</li>
+                <li class="chip" data-tech="powerbi">Power BI</li>
+                <li class="chip" data-tech="chartjs">Chart.js</li>
+                <li class="chip" data-tech="cube">Cube.js</li>
+                <li class="chip" data-tech="metabase">Metabase</li>
+                <li class="chip" data-tech="lookerstudio">Looker Studio</li>
+                <li class="chip" data-tech="i-chart">Gaio</li>
               </ul>
             </article>
 
             <article class="skill card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-server" /></svg></span>
-                <h3 class="skill__title">Back-end &amp; Linguagens</h3>
+                <h3 class="skill__title" data-i18n="skills.back.title">Back-end &amp; Linguagens</h3>
               </div>
-              <p class="skill__desc">APIs que conectam bancos analíticos e aplicações, com base sólida em outras linguagens.</p>
+              <p class="skill__desc" data-i18n="skills.back.desc">APIs que conectam bancos analíticos e aplicações, com base sólida em outras linguagens.</p>
               <ul class="chips">
-                <li class="chip">Node.js</li>
-                <li class="chip">APIs REST</li>
-                <li class="chip">Java</li>
-                <li class="chip">PHP</li>
-                <li class="chip">C++</li>
+                <li class="chip" data-tech="nodejs">Node.js</li>
+                <li class="chip" data-tech="i-server"><span data-i18n="chip.apis">APIs REST</span></li>
+                <li class="chip" data-tech="java">Java</li>
+                <li class="chip" data-tech="php">PHP</li>
+                <li class="chip" data-tech="cplusplus">C++</li>
               </ul>
             </article>
 
             <article class="skill card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-bot" /></svg></span>
-                <h3 class="skill__title">Automação</h3>
+                <h3 class="skill__title" data-i18n="skills.auto.title">Automação</h3>
               </div>
-              <p class="skill__desc">Scripts que eliminam tarefas repetitivas e devolvem horas para a operação.</p>
+              <p class="skill__desc" data-i18n="skills.auto.desc">Scripts que eliminam tarefas repetitivas e devolvem horas para a operação.</p>
               <ul class="chips">
-                <li class="chip">Python</li>
-                <li class="chip">Pandas</li>
-                <li class="chip">Selenium</li>
-                <li class="chip">PyAutoGUI</li>
+                <li class="chip" data-tech="python">Python</li>
+                <li class="chip" data-tech="pandas">Pandas</li>
+                <li class="chip" data-tech="selenium">Selenium</li>
+                <li class="chip" data-tech="python">PyAutoGUI</li>
               </ul>
             </article>
 
             <article class="skill card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-layout" /></svg></span>
-                <h3 class="skill__title">Interfaces &amp; Design</h3>
+                <h3 class="skill__title" data-i18n="skills.ui.title">Interfaces &amp; Design</h3>
               </div>
-              <p class="skill__desc">Telas responsivas, consistentes e agradáveis de usar em qualquer dispositivo.</p>
+              <p class="skill__desc" data-i18n="skills.ui.desc">Telas responsivas, consistentes e agradáveis de usar em qualquer dispositivo.</p>
               <ul class="chips">
-                <li class="chip">Bootstrap</li>
-                <li class="chip">MUI</li>
-                <li class="chip">CSS</li>
-                <li class="chip">Layouts responsivos</li>
+                <li class="chip" data-tech="bootstrap">Bootstrap</li>
+                <li class="chip" data-tech="mui">MUI</li>
+                <li class="chip" data-tech="css">CSS</li>
+                <li class="chip" data-tech="i-layout"><span data-i18n="chip.responsive">Layouts responsivos</span></li>
               </ul>
             </article>
 
             <article class="skill card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-cloud" /></svg></span>
-                <h3 class="skill__title">Cloud &amp; Versionamento</h3>
+                <h3 class="skill__title" data-i18n="skills.cloud.title">Cloud &amp; Versionamento</h3>
               </div>
-              <p class="skill__desc">Versionamento, deploy e monitoramento de aplicações na nuvem.</p>
+              <p class="skill__desc" data-i18n="skills.cloud.desc">Versionamento, deploy e monitoramento de aplicações na nuvem.</p>
               <ul class="chips">
-                <li class="chip">Git</li>
-                <li class="chip">GitHub</li>
-                <li class="chip">Bitbucket</li>
-                <li class="chip">Azure</li>
-                <li class="chip">Vercel</li>
-                <li class="chip">Render</li>
-                <li class="chip">Netlify</li>
-                <li class="chip">Uptime Robot</li>
+                <li class="chip" data-tech="git">Git</li>
+                <li class="chip" data-tech="github">GitHub</li>
+                <li class="chip" data-tech="bitbucket">Bitbucket</li>
+                <li class="chip" data-tech="azure">Azure</li>
+                <li class="chip" data-tech="vercel">Vercel</li>
+                <li class="chip" data-tech="render">Render</li>
+                <li class="chip" data-tech="netlify">Netlify</li>
+                <li class="chip" data-tech="i-pulse">Uptime Robot</li>
               </ul>
             </article>
 
             <article class="skill card" data-reveal data-spotlight>
               <div class="skill__head">
                 <span class="skill__icon"><svg class="icon" aria-hidden="true"><use href="#i-sparkles" /></svg></span>
-                <h3 class="skill__title">IA &amp; Produtividade</h3>
+                <h3 class="skill__title" data-i18n="skills.ai.title">IA &amp; Produtividade</h3>
               </div>
-              <p class="skill__desc">IA e ferramentas de escritório para entregar mais rápido, sem abrir mão da qualidade.</p>
+              <p class="skill__desc" data-i18n="skills.ai.desc">IA e ferramentas de escritório para entregar mais rápido, sem abrir mão da qualidade.</p>
               <ul class="chips">
-                <li class="chip">Claude</li>
-                <li class="chip">ChatGPT</li>
-                <li class="chip">Gemini</li>
-                <li class="chip">Excel</li>
-                <li class="chip">PowerPoint</li>
-                <li class="chip">Project</li>
+                <li class="chip" data-tech="claude">Claude</li>
+                <li class="chip" data-tech="openai">ChatGPT</li>
+                <li class="chip" data-tech="gemini">Gemini</li>
+                <li class="chip" data-tech="excel">Excel</li>
+                <li class="chip" data-tech="powerpoint">PowerPoint</li>
+                <li class="chip" data-tech="i-gantt">Project</li>
               </ul>
             </article>
           </div>
@@ -415,19 +463,167 @@
         <div class="marquee" aria-hidden="true">
           <div class="marquee__row" data-marquee>
             <ul class="marquee__track">
-              <li>JavaScript</li><li>React</li><li>Node.js</li><li>Chart.js</li><li>Cube.js</li><li>PWA</li><li>APIs REST</li><li>Bootstrap</li><li>MUI</li>
+              <li data-tech="javascript">JavaScript</li><li data-tech="react">React</li><li data-tech="nodejs">Node.js</li><li data-tech="chartjs">Chart.js</li><li data-tech="cube">Cube.js</li><li data-tech="pwa">PWA</li><li data-tech="bootstrap">Bootstrap</li><li data-tech="mui">MUI</li><li data-tech="git">Git</li>
             </ul>
             <ul class="marquee__track">
-              <li>JavaScript</li><li>React</li><li>Node.js</li><li>Chart.js</li><li>Cube.js</li><li>PWA</li><li>APIs REST</li><li>Bootstrap</li><li>MUI</li>
+              <li data-tech="javascript">JavaScript</li><li data-tech="react">React</li><li data-tech="nodejs">Node.js</li><li data-tech="chartjs">Chart.js</li><li data-tech="cube">Cube.js</li><li data-tech="pwa">PWA</li><li data-tech="bootstrap">Bootstrap</li><li data-tech="mui">MUI</li><li data-tech="git">Git</li>
             </ul>
           </div>
           <div class="marquee__row marquee__row--outline marquee__row--reverse" data-marquee data-reverse>
             <ul class="marquee__track">
-              <li>SQL</li><li>ClickHouse</li><li>PySpark</li><li>Databricks</li><li>MongoDB</li><li>Power BI</li><li>Metabase</li><li>Python</li><li>Azure</li>
+              <li data-tech="clickhouse">ClickHouse</li><li data-tech="spark">PySpark</li><li data-tech="databricks">Databricks</li><li data-tech="mongodb">MongoDB</li><li data-tech="powerbi">Power BI</li><li data-tech="metabase">Metabase</li><li data-tech="python">Python</li><li data-tech="azure">Azure</li>
             </ul>
             <ul class="marquee__track">
-              <li>SQL</li><li>ClickHouse</li><li>PySpark</li><li>Databricks</li><li>MongoDB</li><li>Power BI</li><li>Metabase</li><li>Python</li><li>Azure</li>
+              <li data-tech="clickhouse">ClickHouse</li><li data-tech="spark">PySpark</li><li data-tech="databricks">Databricks</li><li data-tech="mongodb">MongoDB</li><li data-tech="powerbi">Power BI</li><li data-tech="metabase">Metabase</li><li data-tech="python">Python</li><li data-tech="azure">Azure</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PROJETOS ===================== -->
+      <!--
+        Para adicionar um projeto, copie um <article class="project card">: troque o link, a imagem
+        (assets/img/projects/NOME-960.webp e NOME-640.webp, proporção 16:10) e os textos.
+      -->
+      <section class="section projects" id="projetos">
+        <span class="orb orb--a" aria-hidden="true"></span>
+        <div class="container">
+          <header class="section-head">
+            <span class="kicker"><span class="kicker__num">03</span> <span data-i18n="projects.kicker">Projetos</span></span>
+            <h2 class="section-title" data-split data-i18n="projects.title">Últimos <em>projetos.</em></h2>
+            <p class="section-sub" data-reveal data-i18n="projects.sub">
+              Sites e sistemas que desenvolvi para negócios e pessoas reais — do layout ao painel administrativo.
+            </p>
+          </header>
+
+          <div class="projects__grid">
+            <article class="project project--wide project--featured card" data-reveal data-spotlight>
+              <div class="project__media" aria-hidden="true">
+                <div class="browser">
+                  <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">bibliotecaadmpb.vercel.app</span></div>
+                  <div class="browser__screen">
+                    <img src="assets/img/projects/admp-960.webp" srcset="assets/img/projects/admp-640.webp 640w, assets/img/projects/admp-960.webp 960w" sizes="(max-width: 680px) 92vw, (max-width: 1080px) 56vw, 640px" width="960" height="600" alt="" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span class="project__type" data-i18n="p1.type">Sistema web · Gestão</span></div>
+                <h3 class="project__title"><a href="https://bibliotecaadmpb.vercel.app/" target="_blank" rel="noopener noreferrer">Biblioteca ADMP Brasil</a></h3>
+                <p class="project__desc" data-i18n="p1.desc">
+                  Sistema completo para a biblioteca da ADMP Brasil: acervo com busca por título, autor ou ISBN, cadastro de leitores,
+                  controle de empréstimos e devoluções e avisos pelo WhatsApp — com painel de administradores e acesso protegido.
+                </p>
+                <ul class="chips">
+                  <li class="chip" data-tech="react">React</li>
+                  <li class="chip" data-tech="nodejs">Node.js</li>
+                  <li class="chip" data-tech="i-server"><span data-i18n="chip.api">API REST</span></li>
+                  <li class="chip" data-tech="recaptcha">reCAPTCHA</li>
+                </ul>
+                <span class="project__cta" aria-hidden="true"><span data-i18n="projects.cta">Ver projeto</span><svg class="icon"><use href="#i-arrow" /></svg></span>
+              </div>
+            </article>
+
+            <article class="project card" data-reveal data-spotlight>
+              <div class="project__media" aria-hidden="true">
+                <div class="browser">
+                  <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">coimbraimoveis.netlify.app</span></div>
+                  <div class="browser__screen">
+                    <img src="assets/img/projects/coimbra-640.webp" srcset="assets/img/projects/coimbra-640.webp 640w, assets/img/projects/coimbra-960.webp 960w" sizes="(max-width: 680px) 92vw, (max-width: 1080px) 46vw, 380px" width="640" height="400" alt="" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span class="project__type" data-i18n="p2.type">Site + painel administrativo</span></div>
+                <h3 class="project__title"><a href="https://coimbraimoveis.netlify.app/" target="_blank" rel="noopener noreferrer">Coimbra Imóveis</a></h3>
+                <p class="project__desc" data-i18n="p2.desc">
+                  Site para imobiliária com catálogo de imóveis, página de detalhes com fotos e contato direto por WhatsApp ou e-mail.
+                  Painel com login para cadastrar e editar os imóveis.
+                </p>
+                <ul class="chips">
+                  <li class="chip" data-tech="react">React</li>
+                  <li class="chip" data-tech="nodejs">Node.js</li>
+                  <li class="chip" data-tech="cloudinary">Cloudinary</li>
+                </ul>
+                <span class="project__cta" aria-hidden="true"><span data-i18n="projects.cta">Ver projeto</span><svg class="icon"><use href="#i-arrow" /></svg></span>
+              </div>
+            </article>
+
+            <article class="project card" data-reveal data-spotlight>
+              <div class="project__media" aria-hidden="true">
+                <div class="browser">
+                  <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">lowcarbedelicias.netlify.app</span></div>
+                  <div class="browser__screen">
+                    <img src="assets/img/projects/lowcarb-640.webp" srcset="assets/img/projects/lowcarb-640.webp 640w, assets/img/projects/lowcarb-960.webp 960w" sizes="(max-width: 680px) 92vw, (max-width: 1080px) 46vw, 380px" width="640" height="400" alt="" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span class="project__type" data-i18n="p3.type">Cardápio digital + painel</span></div>
+                <h3 class="project__title"><a href="https://lowcarbedelicias.netlify.app/" target="_blank" rel="noopener noreferrer">Low Carb &amp; Delícias</a></h3>
+                <p class="project__desc" data-i18n="p3.desc">
+                  Cardápio online para uma confeitaria low carb, com pedidos pelo WhatsApp e painel para cadastrar, editar e excluir
+                  produtos e fotos.
+                </p>
+                <ul class="chips">
+                  <li class="chip" data-tech="react">React</li>
+                  <li class="chip" data-tech="nodejs">Node.js</li>
+                  <li class="chip" data-tech="cloudinary">Cloudinary</li>
+                </ul>
+                <span class="project__cta" aria-hidden="true"><span data-i18n="projects.cta">Ver projeto</span><svg class="icon"><use href="#i-arrow" /></svg></span>
+              </div>
+            </article>
+
+            <article class="project card" data-reveal data-spotlight>
+              <div class="project__media" aria-hidden="true">
+                <div class="browser">
+                  <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">portfolio-guilherme-vertum.vercel.app</span></div>
+                  <div class="browser__screen">
+                    <img src="assets/img/projects/vertum-640.webp" srcset="assets/img/projects/vertum-640.webp 640w, assets/img/projects/vertum-960.webp 960w" sizes="(max-width: 680px) 92vw, (max-width: 1080px) 56vw, 380px" width="640" height="400" alt="" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="project__body">
+                <div class="project__meta"><span class="project__type" data-i18n="p4.type">Portfólio profissional</span></div>
+                <h3 class="project__title"><a href="https://portfolio-guilherme-vertum.vercel.app/" target="_blank" rel="noopener noreferrer">Guilherme Silva</a></h3>
+                <p class="project__desc" data-i18n="p4.desc">
+                  Portfólio pessoal para um engenheiro mecatrônico: trajetória, experiência, competências e formação em um layout
+                  sóbrio e técnico, com currículo para download e contato pelo WhatsApp.
+                </p>
+                <ul class="chips">
+                  <li class="chip" data-tech="html">HTML</li>
+                  <li class="chip" data-tech="css">CSS</li>
+                  <li class="chip" data-tech="javascript">JavaScript</li>
+                </ul>
+                <span class="project__cta" aria-hidden="true"><span data-i18n="projects.cta">Ver projeto</span><svg class="icon"><use href="#i-arrow" /></svg></span>
+              </div>
+            </article>
+
+            <article class="project project--wide project--collab card" data-reveal data-spotlight>
+              <div class="project__media" aria-hidden="true">
+                <div class="browser">
+                  <div class="browser__bar"><i></i><i></i><i></i><span class="browser__url">sentinelbank.com.br</span></div>
+                  <div class="browser__screen">
+                    <img src="assets/img/projects/sentinel-960.webp" srcset="assets/img/projects/sentinel-640.webp 640w, assets/img/projects/sentinel-960.webp 960w" sizes="(max-width: 680px) 92vw, (max-width: 1080px) 56vw, 640px" width="960" height="600" alt="" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="project__body">
+                <div class="project__meta">
+                  <span class="badge badge--neutral" data-i18n="projects.collab">Participação</span>
+                  <span class="project__owner" data-i18n="p5.owner">Projeto de Raul Fernandes</span>
+                </div>
+                <h3 class="project__title"><a href="https://sentinelbank.com.br/" target="_blank" rel="noopener noreferrer">Sentinel</a></h3>
+                <p class="project__desc" data-i18n="p5.desc">
+                  Plataforma de gestão financeira pessoal: conecta contas de vários bancos, categoriza gastos com IA e mostra tudo em
+                  painéis em tempo real. Projeto criado por Raul Fernandes, do qual participei.
+                </p>
+                <ul class="chips">
+                  <li class="chip" data-tech="react">React</li>
+                  <li class="chip" data-tech="i-chart"><span data-i18n="chip.dashboards">Dashboards</span></li>
+                </ul>
+                <span class="project__cta" aria-hidden="true"><span data-i18n="projects.cta">Ver projeto</span><svg class="icon"><use href="#i-arrow" /></svg></span>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -437,87 +633,89 @@
         <span class="orb orb--b" aria-hidden="true"></span>
         <div class="container">
           <header class="section-head">
-            <span class="kicker"><span class="kicker__num">03</span> Experiência</span>
-            <h2 class="section-title" data-split>Trajetória <em>profissional.</em></h2>
+            <span class="kicker"><span class="kicker__num">04</span> <span data-i18n="xp.kicker">Experiência</span></span>
+            <h2 class="section-title" data-split data-i18n="xp.title">Trajetória <em>profissional.</em></h2>
           </header>
 
           <div class="xp">
             <!--
               Para adicionar uma nova experiência, copie um <li class="tl-item"> e ajuste:
               data-start="AAAA-MM" e data-end="AAAA-MM" (deixe data-end vazio se for o emprego atual).
-              A duração ("1 ano e 3 meses") é calculada automaticamente.
+              O período ("mar 2026 — atual") e a duração ("1 ano e 3 meses") são gerados sozinhos, no idioma escolhido.
             -->
             <div class="timeline">
               <span class="timeline__rail" aria-hidden="true"><span class="timeline__progress"></span></span>
               <ol class="timeline__list">
 
-              <li class="tl-item is-current" data-reveal>
+              <li class="tl-item is-current" data-reveal data-start="2026-03" data-end="">
                 <span class="tl-dot" aria-hidden="true"></span>
                 <article class="tl-card card" data-spotlight>
                   <div class="tl-head">
                     <span class="tl-period">mar 2026 — atual</span>
-                    <span class="tl-duration" data-start="2026-03" data-end=""></span>
-                    <span class="badge"><span class="pulse" aria-hidden="true"></span>Atual</span>
+                    <span class="tl-duration"></span>
+                    <span class="badge"><span class="pulse" aria-hidden="true"></span><span data-i18n="xp.current">Atual</span></span>
                   </div>
-                  <h3 class="tl-role">Assistente de BI / Analytics II</h3>
+                  <h3 class="tl-role" data-i18n="xp1.role">Assistente de BI / Analytics II</h3>
                   <p class="tl-company">Martins S/A</p>
-                  <p class="tl-desc">
+                  <p class="tl-desc" data-i18n="xp1.desc">
                     Desenvolvimento completo de produtos de dados (dashboards web): front-end em JavaScript com
                     Chart.js, back-end em Node.js e APIs conectadas ao ClickHouse (OLAP) para trafegar grandes volumes de
                     dados. Tratamento, combinação e criação de tabelas com SQL e PySpark no Databricks.
                   </p>
                   <ul class="chips">
-                    <li class="chip">JavaScript</li><li class="chip">Chart.js</li><li class="chip">Node.js</li><li class="chip">APIs</li>
-                    <li class="chip">ClickHouse</li><li class="chip">SQL</li><li class="chip">PySpark</li><li class="chip">Databricks</li><li class="chip">DBeaver</li>
+                    <li class="chip" data-tech="javascript">JavaScript</li><li class="chip" data-tech="chartjs">Chart.js</li><li class="chip" data-tech="nodejs">Node.js</li><li class="chip" data-tech="i-server">APIs</li>
+                    <li class="chip" data-tech="clickhouse">ClickHouse</li><li class="chip" data-tech="i-database">SQL</li><li class="chip" data-tech="spark">PySpark</li><li class="chip" data-tech="databricks">Databricks</li><li class="chip" data-tech="dbeaver">DBeaver</li>
                   </ul>
                 </article>
               </li>
 
-              <li class="tl-item" data-reveal>
+              <li class="tl-item" data-reveal data-start="2024-05" data-end="2026-03">
                 <span class="tl-dot" aria-hidden="true"></span>
                 <article class="tl-card card" data-spotlight>
                   <div class="tl-head">
                     <span class="tl-period">mai 2024 — mar 2026</span>
-                    <span class="tl-duration" data-start="2024-05" data-end="2026-03"></span>
+                    <span class="tl-duration"></span>
                   </div>
-                  <h3 class="tl-role">Analista de Dados</h3>
+                  <h3 class="tl-role" data-i18n="xp2.role">Analista de Dados</h3>
                   <p class="tl-company">Ubertec Service Usinagem</p>
-                  <p class="tl-desc">
+                  <p class="tl-desc" data-i18n="xp2.desc">
                     Criação de planilhas de controle e bases de dados, desenvolvimento de dashboards e indicadores
                     interativos em Power BI e condução de reuniões e apresentações para a gestão, apoiando as decisões
                     estratégicas da empresa com insights.
                   </p>
                   <ul class="chips">
-                    <li class="chip">Power BI</li><li class="chip">Excel</li><li class="chip">Banco de dados</li><li class="chip">Apresentações</li>
+                    <li class="chip" data-tech="powerbi">Power BI</li><li class="chip" data-tech="excel">Excel</li>
+                    <li class="chip" data-tech="i-database"><span data-i18n="chip.db">Banco de dados</span></li>
+                    <li class="chip" data-tech="i-presentation"><span data-i18n="chip.presentations">Apresentações</span></li>
                   </ul>
                 </article>
               </li>
 
-              <li class="tl-item" data-reveal>
+              <li class="tl-item" data-reveal data-start="2024-04" data-end="2024-05">
                 <span class="tl-dot" aria-hidden="true"></span>
                 <article class="tl-card card" data-spotlight>
                   <div class="tl-head">
                     <span class="tl-period">abr 2024 — mai 2024</span>
-                    <span class="tl-duration" data-start="2024-04" data-end="2024-05"></span>
+                    <span class="tl-duration"></span>
                   </div>
-                  <h3 class="tl-role">Auxiliar de PCP Júnior</h3>
+                  <h3 class="tl-role" data-i18n="xp3.role">Auxiliar de PCP Júnior</h3>
                   <p class="tl-company">Ubertec Service Usinagem</p>
-                  <p class="tl-desc">Planejamento e controle da produção: programação e seleção de matéria-prima para a produção.</p>
-                  <ul class="chips"><li class="chip">PCP</li><li class="chip">Planejamento</li></ul>
+                  <p class="tl-desc" data-i18n="xp3.desc">Planejamento e controle da produção: programação e seleção de matéria-prima para a produção.</p>
+                  <ul class="chips"><li class="chip" data-i18n="chip.pcp">PCP</li><li class="chip" data-i18n="chip.planning">Planejamento</li></ul>
                 </article>
               </li>
 
-              <li class="tl-item" data-reveal>
+              <li class="tl-item" data-reveal data-start="2023-08" data-end="2024-03">
                 <span class="tl-dot" aria-hidden="true"></span>
                 <article class="tl-card card" data-spotlight>
                   <div class="tl-head">
                     <span class="tl-period">ago 2023 — mar 2024</span>
-                    <span class="tl-duration" data-start="2023-08" data-end="2024-03"></span>
+                    <span class="tl-duration"></span>
                   </div>
-                  <h3 class="tl-role">Atendente de Telemarketing · Jovem Aprendiz</h3>
+                  <h3 class="tl-role" data-i18n="xp4.role">Atendente de Telemarketing · Jovem Aprendiz</h3>
                   <p class="tl-company">Callink · Instituto João Bittar</p>
-                  <p class="tl-desc">Atendimento e recepção de clientes na operação Claro.</p>
-                  <ul class="chips"><li class="chip">Atendimento</li><li class="chip">Comunicação</li></ul>
+                  <p class="tl-desc" data-i18n="xp4.desc">Atendimento e recepção de clientes na operação Claro.</p>
+                  <ul class="chips"><li class="chip" data-i18n="chip.service">Atendimento</li><li class="chip" data-i18n="soft.comm">Comunicação</li></ul>
                 </article>
               </li>
               </ol>
@@ -526,23 +724,151 @@
             <aside class="xp__aside">
               <div class="card info-card" data-reveal data-spotlight>
                 <span class="info-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-cap" /></svg></span>
-                <span class="kicker kicker--plain">Formação</span>
-                <h3 class="info-card__title">Sistemas de Informação</h3>
-                <p class="info-card__text">Graduação · UNIUBE</p>
-                <p class="info-card__meta mono">conclusão prevista: 2027</p>
+                <span class="kicker kicker--plain" data-i18n="edu.kicker">Formação</span>
+                <h3 class="info-card__title" data-i18n="edu.title">Sistemas de Informação</h3>
+                <p class="info-card__text" data-i18n="edu.text">Graduação · UNIUBE</p>
+                <p class="info-card__meta mono" data-i18n="edu.meta">conclusão prevista: 2027</p>
               </div>
 
               <div class="card info-card" data-reveal data-spotlight>
                 <span class="info-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-file" /></svg></span>
-                <span class="kicker kicker--plain">Currículo</span>
-                <h3 class="info-card__title">Prefere o PDF?</h3>
-                <p class="info-card__text">Todas as informações em uma página para salvar ou compartilhar.</p>
+                <span class="kicker kicker--plain" data-i18n="cv.kicker">Currículo</span>
+                <h3 class="info-card__title" data-i18n="cv.title">Prefere o PDF?</h3>
+                <p class="info-card__text" data-i18n="cv.text">Todas as informações em uma página para salvar ou compartilhar.</p>
                 <a class="btn btn--ghost btn--sm" href="assets/docs/curriculo-bruno-henrique.pdf" download="Curriculo-Bruno-Henrique.pdf">
                   <svg class="icon" aria-hidden="true"><use href="#i-download" /></svg>
-                  Baixar currículo
+                  <span data-i18n="cv.download">Baixar currículo</span>
                 </a>
               </div>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SERVIÇOS ===================== -->
+      <!-- O botão "Pedir orçamento" abre o WhatsApp já citando o título do serviço do card. -->
+      <section class="section services" id="servicos">
+        <span class="orb orb--c" aria-hidden="true"></span>
+        <div class="container">
+          <header class="section-head">
+            <span class="kicker"><span class="kicker__num">05</span> <span data-i18n="services.kicker">Serviços</span></span>
+            <h2 class="section-title" data-split data-i18n="services.title">Soluções para o <em>seu negócio.</em></h2>
+            <p class="section-sub" data-reveal data-i18n="services.sub">
+              Do site que apresenta sua empresa aos painéis que mostram para onde ela está indo — desenvolvimento e dados sob
+              medida, com atendimento direto comigo.
+            </p>
+          </header>
+
+          <div class="services__group">
+            <div class="services__group-head" data-reveal>
+              <span class="services__group-num">/ 01</span>
+              <h3 class="services__group-title" data-i18n="services.dev">Desenvolvimento</h3>
+            </div>
+            <div class="services__grid">
+              <article class="service card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-store" /></svg></span>
+                <h4 class="service__title" data-i18n="s.site.title">Site para o seu negócio</h4>
+                <p class="service__desc" data-i18n="s.site.desc">Site rápido, bonito e pronto para celular, com WhatsApp integrado, para apresentar sua empresa e atrair clientes.</p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+              <article class="service card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-id" /></svg></span>
+                <h4 class="service__title" data-i18n="s.portfolio.title">Portfólio profissional</h4>
+                <p class="service__desc" data-i18n="s.portfolio.desc">Um site pessoal que apresenta sua trajetória e suas habilidades para recrutadores e clientes — como este aqui.</p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+              <article class="service card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-clipboard" /></svg></span>
+                <h4 class="service__title" data-i18n="s.app.title">App de registro e cadastro</h4>
+                <p class="service__desc" data-i18n="s.app.desc">Aplicativo web para registrar vendas, pedidos, atendimentos ou clientes, acessível do computador e do celular.</p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+              <article class="service card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-dashboard" /></svg></span>
+                <h4 class="service__title" data-i18n="s.erp.title">Sistema de gestão para sua empresa</h4>
+                <p class="service__desc" data-i18n="s.erp.desc">Sistema sob medida com painel administrativo, cadastros, estoque, financeiro e relatórios — tudo em um só lugar.</p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+            </div>
+          </div>
+
+          <div class="services__group">
+            <div class="services__group-head" data-reveal>
+              <span class="services__group-num">/ 02</span>
+              <h3 class="services__group-title" data-i18n="services.data">Dados &amp; BI</h3>
+            </div>
+            <div class="services__grid">
+              <article class="service service--bi card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-chart" /></svg></span>
+                <h4 class="service__title" data-i18n="s.bi.title">BI &amp; Inteligência de Negócio</h4>
+                <p class="service__desc" data-i18n="s.bi.desc">
+                  Dashboards e indicadores que mostram, em tempo real, como está o seu negócio. Trabalho com as ferramentas
+                  profissionais usadas por grandes empresas e também com alternativas <strong>gratuitas e de código aberto</strong> —
+                  sem custo de licença para você.
+                </p>
+                <ul class="bi-stack">
+                  <li class="bi-tool" data-tech="powerbi">Power BI</li>
+                  <li class="bi-tool is-free" data-tech="metabase">Metabase</li>
+                  <li class="bi-tool is-free" data-tech="lookerstudio">Looker Studio</li>
+                  <li class="bi-tool is-free" data-tech="clickhouse">ClickHouse</li>
+                  <li class="bi-tool" data-tech="databricks">Databricks</li>
+                  <li class="bi-tool is-free" data-tech="spark">PySpark</li>
+                  <li class="bi-tool is-free" data-tech="python">Python</li>
+                  <li class="bi-tool" data-tech="i-database">SQL</li>
+                  <li class="bi-tool is-free" data-tech="chartjs">Chart.js</li>
+                  <li class="bi-tool is-free" data-tech="cube">Cube.js</li>
+                  <li class="bi-tool" data-tech="excel">Excel</li>
+                  <li class="bi-tool" data-tech="i-chart">Gaio</li>
+                </ul>
+                <p class="bi-legend"><i aria-hidden="true"></i><span data-i18n="s.bi.legend">gratuita ou de código aberto</span></p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+              <article class="service service--wide card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-trending" /></svg></span>
+                <h4 class="service__title" data-i18n="s.sales.title">Análise de vendas e oportunidades</h4>
+                <p class="service__desc" data-i18n="s.sales.desc">Descubra o que mais vende, quem são seus melhores clientes e onde estão as oportunidades de crescimento — com dados, não com achismo.</p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+              <article class="service service--wide card" data-reveal data-spotlight>
+                <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-table" /></svg></span>
+                <h4 class="service__title" data-i18n="s.sheets.title">Planilhas de gestão</h4>
+                <p class="service__desc" data-i18n="s.sheets.desc">Planilhas inteligentes para controlar caixa, estoque, vendas e clientes, com fórmulas e painéis prontos para o dia a dia.</p>
+                <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+              </article>
+              <article class="service service--pdf card" data-reveal data-spotlight>
+                <div class="service__main">
+                  <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-presentation" /></svg></span>
+                  <h4 class="service__title" data-i18n="s.pdf.title">Apresentação da empresa (PDF)</h4>
+                  <p class="service__desc" data-i18n="s.pdf.desc">Apresentação institucional ou comercial em PDF, com identidade visual, números e gráficos que valorizam o seu negócio.</p>
+                  <a class="service__example" href="https://github.com/hennriquee/jf-service/blob/main/JF_Service_Apresentacao.pdf" target="_blank" rel="noopener noreferrer">
+                    <svg class="icon" aria-hidden="true"><use href="#i-file" /></svg>
+                    <span data-i18n="s.pdf.example">Ver exemplo: apresentação da JF Service</span>
+                    <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+                  </a>
+                  <a class="service__cta" href="https://wa.me/5534996560351" target="_blank" rel="noopener noreferrer" data-wa-service><span data-i18n="services.cta">Pedir orçamento</span><svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+                </div>
+                <!-- Prévia: capa e páginas da apresentação feita para a JF Service -->
+                <a class="deck" href="https://github.com/hennriquee/jf-service/blob/main/JF_Service_Apresentacao.pdf" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+                  <img class="deck__page deck__page--3" src="assets/img/projects/jf-gallery.webp" width="560" height="315" alt="" loading="lazy" decoding="async" />
+                  <img class="deck__page deck__page--2" src="assets/img/projects/jf-services.webp" width="560" height="315" alt="" loading="lazy" decoding="async" />
+                  <img class="deck__page deck__page--1" src="assets/img/projects/jf-cover.webp" width="560" height="315" alt="" loading="lazy" decoding="async" />
+                  <span class="deck__tag mono">PDF · 14 <span data-i18n="s.pdf.pages">páginas</span></span>
+                </a>
+              </article>
+            </div>
+          </div>
+
+          <!-- Faixa final: outra ideia? -->
+          <div class="services__more card" data-reveal>
+            <span class="service__icon"><svg class="icon" aria-hidden="true"><use href="#i-bulb" /></svg></span>
+            <div class="services__more-text">
+              <h3 class="service__title" data-i18n="s.other.title">Tem outra ideia?</h3>
+              <p class="service__desc" data-i18n="s.other.desc">Automações, integrações, relatórios… Me conte o que você precisa e eu monto uma proposta sob medida.</p>
+            </div>
+            <a class="btn btn--whatsapp" href="https://wa.me/5534996560351?text=Ol%C3%A1%2C%20Bruno!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer" data-whatsapp>
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg>
+              <span data-i18n="s.other.cta">Conversar no WhatsApp</span>
+            </a>
           </div>
         </div>
       </section>
@@ -552,9 +878,9 @@
         <span class="orb orb--c" aria-hidden="true"></span>
         <div class="container">
           <header class="section-head">
-            <span class="kicker"><span class="kicker__num">04</span> Contato</span>
-            <h2 class="section-title" data-split>Vamos <em>conversar?</em></h2>
-            <p class="section-sub" data-reveal>
+            <span class="kicker"><span class="kicker__num">06</span> <span data-i18n="contact.kicker">Contato</span></span>
+            <h2 class="section-title" data-split data-i18n="contact.title">Vamos <em>conversar?</em></h2>
+            <p class="section-sub" data-reveal data-i18n="contact.sub">
               Tem uma vaga, um projeto ou uma ideia? Me mande uma mensagem — respondo o mais rápido possível.
             </p>
           </header>
@@ -564,7 +890,7 @@
               <a class="channel channel--wa card" href="https://wa.me/5534996560351?text=Ol%C3%A1%2C%20Bruno!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer" data-whatsapp data-reveal data-spotlight>
                 <span class="channel__icon"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg></span>
                 <span class="channel__body">
-                  <span class="channel__label">WhatsApp · resposta mais rápida</span>
+                  <span class="channel__label" data-i18n="contact.waLabel">WhatsApp · resposta mais rápida</span>
                   <span class="channel__value">(34) 99656-0351</span>
                 </span>
                 <svg class="icon channel__arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
@@ -576,7 +902,7 @@
                   <span class="channel__label">E-mail</span>
                   <a class="channel__value" href="#contato" data-email>brunohms2705@gmail.com</a>
                 </span>
-                <button class="icon-btn" type="button" data-copy-email aria-label="Copiar e-mail">
+                <button class="icon-btn" type="button" data-copy-email aria-label="Copiar e-mail" data-i18n-attr="aria-label:contact.copy">
                   <svg class="icon" aria-hidden="true"><use href="#i-copy" /></svg>
                 </button>
               </div>
@@ -592,7 +918,7 @@
 
               <p class="channels__loc" data-reveal>
                 <svg class="icon" aria-hidden="true"><use href="#i-pin" /></svg>
-                Uberlândia, MG · Brasil
+                <span data-i18n="contact.loc">Uberlândia, MG · Brasil</span>
               </p>
             </div>
 
@@ -600,29 +926,29 @@
               <form class="form" data-contact-form novalidate>
                 <div class="form__row">
                   <div class="field">
-                    <label for="f-name">Nome</label>
-                    <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required placeholder="Como posso te chamar?" />
+                    <label for="f-name" data-i18n="form.name">Nome</label>
+                    <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required placeholder="Como posso te chamar?" data-i18n-attr="placeholder:form.namePh" />
                     <p class="field__error" id="f-name-error"></p>
                   </div>
                   <div class="field">
                     <label for="f-email">E-mail</label>
-                    <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="voce@empresa.com" />
+                    <input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="voce@empresa.com" data-i18n-attr="placeholder:form.emailPh" />
                     <p class="field__error" id="f-email-error"></p>
                   </div>
                 </div>
 
                 <div class="field">
-                  <label for="f-subject">Assunto</label>
-                  <input id="f-subject" name="subject" type="text" maxlength="120" required placeholder="Vaga, projeto, parceria…" />
+                  <label for="f-subject" data-i18n="form.subject">Assunto</label>
+                  <input id="f-subject" name="subject" type="text" maxlength="120" required placeholder="Vaga, projeto, orçamento…" data-i18n-attr="placeholder:form.subjectPh" />
                   <p class="field__error" id="f-subject-error"></p>
                 </div>
 
                 <div class="field">
                   <div class="field__top">
-                    <label for="f-message">Mensagem</label>
+                    <label for="f-message" data-i18n="form.message">Mensagem</label>
                     <span class="counter mono" data-counter aria-live="off">0/2000</span>
                   </div>
-                  <textarea id="f-message" name="message" rows="6" maxlength="2000" required placeholder="Conte um pouco sobre o que você precisa."></textarea>
+                  <textarea id="f-message" name="message" rows="6" maxlength="2000" required placeholder="Conte um pouco sobre o que você precisa." data-i18n-attr="placeholder:form.messagePh"></textarea>
                   <p class="field__error" id="f-message-error"></p>
                 </div>
 
@@ -637,10 +963,10 @@
                 <div class="form__foot">
                   <p class="form__note">
                     <svg class="icon" aria-hidden="true"><use href="#i-lock" /></svg>
-                    Enviado direto para o meu e-mail. Seus dados não são compartilhados.
+                    <span data-i18n="form.note">Enviado direto para o meu e-mail. Seus dados não são compartilhados.</span>
                   </p>
                   <button class="btn btn--primary" type="submit" data-submit>
-                    <span class="btn__label">Enviar mensagem</span>
+                    <span class="btn__label" data-i18n="form.submit">Enviar mensagem</span>
                     <svg class="icon" aria-hidden="true"><use href="#i-send" /></svg>
                   </button>
                 </div>
@@ -653,9 +979,9 @@
                   <circle cx="26" cy="26" r="24" />
                   <path d="M15 27l7 7 15-15" />
                 </svg>
-                <h3>Mensagem enviada!</h3>
+                <h3 data-i18n="success.title">Mensagem enviada!</h3>
                 <p data-success-text>Obrigado pelo contato. Vou responder no e-mail informado o mais breve possível.</p>
-                <button class="btn btn--ghost btn--sm" type="button" data-form-reset>Enviar outra mensagem</button>
+                <button class="btn btn--ghost btn--sm" type="button" data-form-reset data-i18n="success.again">Enviar outra mensagem</button>
               </div>
             </div>
           </div>
@@ -669,9 +995,9 @@
         <div class="footer__top">
           <div>
             <a href="#inicio" class="footer__brand">Bruno Henrique<span class="accent">.</span></a>
-            <p class="footer__tagline">Desenvolvimento · Dados · BI</p>
+            <p class="footer__tagline" data-i18n="footer.tagline">Desenvolvimento · Dados · BI</p>
           </div>
-          <nav class="footer__links" aria-label="Links do rodapé">
+          <nav class="footer__links" aria-label="Links do rodapé" data-i18n-attr="aria-label:footer.links">
             <a href="https://github.com/hennriquee" target="_blank" rel="noopener noreferrer" class="icon-btn" aria-label="GitHub">
               <svg class="icon" aria-hidden="true"><use href="#i-github" /></svg>
             </a>
@@ -682,7 +1008,7 @@
               <svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg>
             </a>
             <a href="#inicio" class="btn btn--ghost btn--sm footer__top-btn">
-              Voltar ao topo
+              <span data-i18n="footer.top">Voltar ao topo</span>
               <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
             </a>
           </nav>
@@ -691,16 +1017,16 @@
         <p class="footer__giant" aria-hidden="true">Bruno Henrique</p>
 
         <div class="footer__bottom">
-          <span>© <span data-year>2026</span> Bruno Henrique. Todos os direitos reservados.</span>
-          <span class="mono">feito à mão com HTML, CSS, JS, Three.js &amp; GSAP</span>
+          <span>© <span data-year>2026</span> Bruno Henrique. <span data-i18n="footer.rights">Todos os direitos reservados.</span></span>
+          <span class="mono" data-i18n="footer.made">feito à mão com HTML, CSS, JS, Three.js &amp; GSAP</span>
         </div>
       </div>
     </footer>
 
     <!-- Botão flutuante do WhatsApp -->
-    <a class="wa-fab" href="https://wa.me/5534996560351?text=Ol%C3%A1%2C%20Bruno!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" data-whatsapp>
+    <a class="wa-fab" href="https://wa.me/5534996560351?text=Ol%C3%A1%2C%20Bruno!%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA." target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" data-i18n-attr="aria-label:fab.aria" data-whatsapp>
       <svg class="icon" aria-hidden="true"><use href="#i-whatsapp" /></svg>
-      <span class="wa-fab__label">Fale no WhatsApp</span>
+      <span class="wa-fab__label" data-i18n="fab.label">Fale no WhatsApp</span>
     </a>
 
     <div class="toast" data-toast role="status" aria-live="polite"></div>

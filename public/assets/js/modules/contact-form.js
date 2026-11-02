@@ -4,6 +4,7 @@
  * e, se o envio falhar, oferece WhatsApp ou e-mail já preenchidos com a mensagem.
  */
 import { CONFIG, emailAddress, whatsappUrl } from "../config.js";
+import { t } from "./i18n.js";
 
 const LIMITS = { name: 80, email: 254, subject: 120, message: 2000 };
 const EMAIL_RE = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[a-z]{2,}$/i;
@@ -12,10 +13,18 @@ const COOLDOWN_MS = 60_000;
 const TOKEN_MIN_AGE_MS = 2200; // o servidor descarta envios com token mais novo que 2s
 
 const RULES = {
-  name: (v) => (v.length < 2 ? "Informe seu nome." : ""),
-  email: (v) => (!v ? "Informe seu e-mail." : EMAIL_RE.test(v) ? "" : "Este e-mail não parece válido."),
-  subject: (v) => (v.length < 2 ? "Informe o assunto." : ""),
-  message: (v) => (v.length < 10 ? "Escreva uma mensagem com pelo menos 10 caracteres." : ""),
+  name: (v) => (v.length < 2 ? t("form.err.name") : ""),
+  email: (v) => (!v ? t("form.err.emailEmpty") : EMAIL_RE.test(v) ? "" : t("form.err.emailInvalid")),
+  subject: (v) => (v.length < 2 ? t("form.err.subject") : ""),
+  message: (v) => (v.length < 10 ? t("form.err.message") : ""),
+};
+
+// Códigos de erro devolvidos pela função /api/contact → mensagem no idioma do visitante.
+const SERVER_ERRORS = {
+  unavailable: "form.unavailable",
+  rate_limited: "form.rate",
+  forbidden: "form.forbidden",
+  token_invalid: "form.forbidden",
 };
 
 export function initContactForm() {
@@ -109,25 +118,28 @@ export function initContactForm() {
 
   /* ---------- Mensagens de estado ---------- */
   const hideStatus = () => {
+    lastError = null;
     status.hidden = true;
     status.className = "form__status";
     status.replaceChildren();
   };
 
-  const showError = (message, data) => {
+  let lastError = null;
+  const showError = (message, data, key = null) => {
+    lastError = key ? { key, data } : null;
     status.hidden = false;
     status.className = "form__status is-error";
     const text = document.createElement("p");
     text.textContent = message;
 
-    const preview = `Olá, Bruno! Sou ${data.name}.\n\n*${data.subject}*\n${data.message}`.slice(0, 1500);
+    const preview = t("wa.form", data).slice(0, 1500);
     const actions = document.createElement("div");
     actions.className = "form__status-actions";
     actions.append(
-      makeLink(whatsappUrl(preview), "Enviar pelo WhatsApp", "btn btn--whatsapp btn--sm", true),
+      makeLink(whatsappUrl(preview), t("form.sendWa"), "btn btn--whatsapp btn--sm", true),
       makeLink(
         `mailto:${emailAddress()}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.message)}`,
-        "Abrir meu e-mail",
+        t("form.openMail"),
         "btn btn--ghost btn--sm",
       ),
     );
@@ -139,7 +151,7 @@ export function initContactForm() {
     sending = value;
     submit.disabled = value;
     submit.setAttribute("aria-busy", String(value));
-    submitLabel.textContent = value ? "Enviando…" : "Enviar mensagem";
+    submitLabel.textContent = value ? t("form.sending") : t("form.submit");
     const icon = submit.querySelector(".icon, .spinner");
     if (value && icon?.classList.contains("icon")) {
       const spinner = document.createElement("span");
@@ -152,13 +164,24 @@ export function initContactForm() {
     }
   };
 
+  let successName = "";
+  const renderSuccessText = () => (successText.textContent = t("success.text", { name: successName }));
   const showSuccess = (name) => {
-    successText.textContent = `Obrigado pelo contato, ${name.split(" ")[0]}! Vou responder no e-mail informado o mais breve possível.`;
+    successName = name.split(" ")[0];
+    renderSuccessText();
     form.hidden = true;
     success.hidden = false;
     success.focus({ preventScroll: true });
-    announce(`Mensagem enviada! ${successText.textContent}`);
+    announce(`${t("success.announce")} ${successText.textContent}`);
   };
+
+  // Troca de idioma: refaz as mensagens que estão na tela.
+  document.addEventListener("langchange", () => {
+    Object.keys(fields).forEach((name) => fields[name].hasAttribute("aria-invalid") && validateField(name));
+    if (!success.hidden) renderSuccessText();
+    if (sending) submitLabel.textContent = t("form.sending");
+    if (!status.hidden && lastError) showError(t(lastError.key), lastError.data, lastError.key);
+  });
 
   card.querySelector("[data-form-reset]")?.addEventListener("click", () => {
     form.reset();
@@ -178,7 +201,7 @@ export function initContactForm() {
     const invalid = Object.keys(fields).filter((name) => !validateField(name));
     if (invalid.length) {
       fields[invalid[0]].focus();
-      announce(`Confira ${invalid.length > 1 ? "os campos destacados" : "o campo destacado"}.`);
+      announce(t(invalid.length > 1 ? "form.checkMany" : "form.checkOne"));
       return;
     }
 
@@ -191,7 +214,7 @@ export function initContactForm() {
 
     const lastSent = readCooldown();
     if (lastSent && Date.now() - lastSent < COOLDOWN_MS) {
-      showError("Você acabou de enviar uma mensagem. Aguarde um minuto ou fale comigo direto:", data);
+      showError(t("form.cooldown"), data, "form.cooldown");
       return;
     }
 
@@ -222,16 +245,20 @@ export function initContactForm() {
       }
 
       if (response.status === 422 && result.fields) {
-        Object.entries(result.fields).forEach(([name, message]) => fields[name] && setError(name, message));
+        // Mostra a mensagem do próprio site (no idioma do visitante) para cada campo recusado.
+        Object.keys(result.fields).forEach((name) => {
+          if (fields[name]) setError(name, RULES[name](fields[name].value.trim()) || t("form.checkOne"));
+        });
         const first = Object.keys(result.fields).find((name) => fields[name]);
         if (first) fields[first].focus();
-        announce(result.error || "Confira os campos destacados.");
+        announce(t("form.checkMany"));
         return;
       }
 
-      showError(result.error || "Não foi possível enviar agora. Você pode falar comigo direto por aqui:", data);
+      const key = SERVER_ERRORS[result.code] || "form.generic";
+      showError(t(key), data, key);
     } catch {
-      showError("Não consegui conectar ao servidor. Você pode falar comigo direto por aqui:", data);
+      showError(t("form.network"), data, "form.network");
     } finally {
       setSending(false);
     }
