@@ -31,58 +31,58 @@
   --whatsapp: #25d366;
 }
 
-/* ---------- Tema escuro (padrão) ---------- */
+/* ---------- Tema escuro (padrão): quase preto, fosco; o azul fica nos destaques ---------- */
 :root,
 :root[data-theme="dark"] {
   color-scheme: dark;
 
   /* Versão compatível com navegadores mais antigos */
-  --bg: color-mix(in srgb, var(--brand) 20%, #02040a);
-  --bg-elev: color-mix(in srgb, var(--brand) 30%, #03060f);
-  --surface: color-mix(in srgb, var(--brand) 42%, #060a16);
-  --surface-2: color-mix(in srgb, var(--brand) 55%, #0b1224);
-  --line: rgb(160 180 255 / 0.12);
-  --text: #eef2ff;
-  --text-muted: #b4bed8;
-  --text-dim: #7f8aa8;
-  --accent: color-mix(in srgb, var(--brand) 20%, #7fa2ff);
-  --accent-strong: color-mix(in srgb, var(--brand) 40%, #3b6bff);
-  --accent-2: color-mix(in srgb, var(--brand) 15%, #7ddcf2);
-  --glow: color-mix(in srgb, var(--brand) 55%, #2f5bff);
+  --bg: #0a0b0e;
+  --bg-elev: #0f1115;
+  --surface: #14161b;
+  --surface-2: #1b1e25;
+  --line: rgb(220 226 240 / 0.08);
+  --text: #eceef3;
+  --text-muted: #a9aebb;
+  --text-dim: #737987;
+  --accent: color-mix(in srgb, var(--brand) 25%, #86a5f5);
+  --accent-strong: color-mix(in srgb, var(--brand) 45%, #3a63e0);
+  --accent-2: color-mix(in srgb, var(--brand) 20%, #8fc9dc);
+  --glow: color-mix(in srgb, var(--brand) 70%, #1d3a8a);
 
-  /* Tons da marca usados em faixas e fundos */
-  --tint-page: color-mix(in srgb, var(--brand) 22%, transparent);
-  --tint-hero: color-mix(in srgb, var(--brand) 70%, transparent);
-  --tint-band: color-mix(in srgb, var(--brand) 38%, transparent);
-  --tint-card: color-mix(in srgb, var(--brand) 55%, transparent);
-  --tint-icon: color-mix(in srgb, var(--brand) 45%, transparent);
-  --footer-end: color-mix(in srgb, var(--brand) 55%, var(--bg));
+  /* Tons da marca usados em faixas e fundos (bem discretos) */
+  --tint-page: color-mix(in srgb, var(--brand) 9%, transparent);
+  --tint-hero: color-mix(in srgb, var(--brand) 22%, transparent);
+  --tint-band: color-mix(in srgb, var(--brand) 8%, transparent);
+  --tint-card: color-mix(in srgb, var(--brand) 16%, transparent);
+  --tint-icon: color-mix(in srgb, var(--brand) 22%, transparent);
+  --footer-end: color-mix(in srgb, var(--brand) 14%, var(--bg));
 
   /* Sombras e textos de status */
-  --shadow: rgb(0 0 0 / 0.7);
-  --shadow-soft: rgb(0 0 0 / 0.45);
-  --highlight: rgb(255 255 255 / 0.04);
+  --shadow: rgb(0 0 0 / 0.75);
+  --shadow-soft: rgb(0 0 0 / 0.5);
+  --highlight: rgb(255 255 255 / 0.03);
   --ok-text: color-mix(in srgb, var(--ok) 70%, white);
   --danger-text: color-mix(in srgb, var(--danger) 70%, white);
-  --noise-opacity: 0.035;
+  --noise-opacity: 0.03;
 }
 
-/* Versão moderna (mantém o tom exato da marca) */
+/* Versão moderna (mantém o tom da marca, quase sem saturação nas superfícies) */
 @supports (color: oklch(from red l c h)) {
   :root,
   :root[data-theme="dark"] {
-    --bg: oklch(from var(--brand) 0.14 calc(c * 0.5) h);
-    --bg-elev: oklch(from var(--brand) 0.175 calc(c * 0.65) h);
-    --surface: oklch(from var(--brand) 0.215 calc(c * 0.8) h);
-    --surface-2: oklch(from var(--brand) 0.265 calc(c * 0.85) h);
-    --line: oklch(from var(--brand) 0.85 calc(c * 0.4) h / 0.12);
-    --text: oklch(from var(--brand) 0.97 0.012 h);
-    --text-muted: oklch(from var(--brand) 0.8 0.03 h);
-    --text-dim: oklch(from var(--brand) 0.64 0.04 h);
-    --accent: oklch(from var(--brand) 0.76 max(c, 0.14) h);
-    --accent-strong: oklch(from var(--brand) 0.56 max(c, 0.19) h);
-    --accent-2: oklch(from var(--brand) 0.85 0.11 calc(h - 55));
-    --glow: oklch(from var(--brand) 0.5 max(c, 0.2) h);
+    --bg: oklch(from var(--brand) 0.145 calc(c * 0.07) h);
+    --bg-elev: oklch(from var(--brand) 0.17 calc(c * 0.08) h);
+    --surface: oklch(from var(--brand) 0.195 calc(c * 0.09) h);
+    --surface-2: oklch(from var(--brand) 0.235 calc(c * 0.1) h);
+    --line: oklch(from var(--brand) 0.92 calc(c * 0.08) h / 0.085);
+    --text: oklch(from var(--brand) 0.95 0.005 h);
+    --text-muted: oklch(from var(--brand) 0.76 0.012 h);
+    --text-dim: oklch(from var(--brand) 0.58 0.015 h);
+    --accent: oklch(from var(--brand) 0.74 0.13 h);
+    --accent-strong: oklch(from var(--brand) 0.5 0.17 h);
+    --accent-2: oklch(from var(--brand) 0.8 0.07 calc(h - 55));
+    --glow: oklch(from var(--brand) 0.36 0.12 h);
   }
 }
 

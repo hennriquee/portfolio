@@ -1,8 +1,7 @@
 /*
  * Microinterações e conteúdo dinâmico:
  * links de contato, cópia de e-mail, texto digitado, durações das
- * experiências, números calculados, holofote dos cards, botões magnéticos
- * e botão flutuante do WhatsApp.
+ * experiências, números calculados, holofote dos cards e botão flutuante do WhatsApp.
  */
 import { emailAddress, whatsappUrl } from "../config.js";
 import { t, getLocale } from "./i18n.js";
@@ -13,7 +12,6 @@ export function initInteractions({ reduceMotion }) {
   setupDurations();
   setupStats();
   setupSpotlight();
-  if (!reduceMotion) setupMagnetic();
   setupWhatsappFab();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = String(new Date().getFullYear())));
 
@@ -213,26 +211,6 @@ function setupSpotlight() {
       const rect = card.getBoundingClientRect();
       card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
       card.style.setProperty("--my", `${event.clientY - rect.top}px`);
-    });
-  });
-}
-
-/* ---------- Botões magnéticos ---------- */
-function setupMagnetic() {
-  const { gsap } = window;
-  if (!gsap || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-  document.querySelectorAll("[data-magnetic]").forEach((el) => {
-    const xTo = gsap.quickTo(el, "x", { duration: 0.6, ease: "power3.out" });
-    const yTo = gsap.quickTo(el, "y", { duration: 0.6, ease: "power3.out" });
-    el.addEventListener("pointermove", (event) => {
-      const rect = el.getBoundingClientRect();
-      xTo((event.clientX - (rect.left + rect.width / 2)) * 0.22);
-      yTo((event.clientY - (rect.top + rect.height / 2)) * 0.32);
-    });
-    el.addEventListener("pointerleave", () => {
-      xTo(0);
-      yTo(0);
     });
   });
 }

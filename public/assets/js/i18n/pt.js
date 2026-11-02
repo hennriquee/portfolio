@@ -11,6 +11,7 @@ export default {
   "theme.light": "Tema claro",
   "theme.dark": "Tema escuro",
   "toast.copied": "E-mail copiado!",
+  "info.close": "Fechar",
 
   "wa.msg": "Olá, Bruno! Vi seu portfólio e gostaria de conversar com você.",
   "wa.service": "Olá, Bruno! Vi seu portfólio e tenho interesse em: {service}.",

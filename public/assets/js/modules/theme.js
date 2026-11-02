@@ -5,7 +5,7 @@
  */
 import { t } from "./i18n.js";
 
-const META_COLOR = { dark: "#050b1c", light: "#f7f9fd" };
+const META_COLOR = { dark: "#0a0b0e", light: "#f7f9fd" };
 
 export function initTheme({ reduceMotion }) {
   const root = document.documentElement;

@@ -56,6 +56,11 @@ de tradução (`wa.msg`, `wa.service`).
 Os nomes disponíveis estão em `assets/img/tech-icons.svg` (`id="t-nome"`). Para tecnologias sem
 logo, use um ícone de linha do `index.html`, como `data-tech="i-database"`.
 Os logos vêm das coleções livres do Iconify (logos e simple-icons: CC0; devicon e vscode-icons: MIT).
+Ao clicar em um chip com logo, abre um balão explicando a tecnologia. Os textos (PT/EN/ES) ficam em
+`public/assets/js/i18n/tech-info.js`, pela mesma chave do `data-tech` (ou por `data-info="chave"`,
+quando o chip usa um ícone genérico — ex.: SQL, APIs).
+
+**LinkedIn e GitHub** — os links estão direto no `index.html` (menu do celular, contato e rodapé).
 
 **Projetos** — em `index.html`, seção `PROJETOS`. Copie um `<article class="project card">`,
 troque o link, os textos e as imagens (`assets/img/projects/NOME-960.webp` e `NOME-640.webp`, 16:10).

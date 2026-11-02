@@ -26,7 +26,7 @@ function readColor(token) {
 // Ajustes por tema: no claro, partículas escuras com mistura normal (a aditiva sumiria no fundo branco).
 const NORMAL_BLENDING = 1; // THREE.NormalBlending
 const THEME = {
-  dark: { blending: "additive", wave: 0.9, dust: 0.75 },
+  dark: { blending: "additive", wave: 0.7, dust: 0.5 },
   light: { blending: "normal", wave: 0.8, dust: 0.55 },
 };
 const currentTheme = () => (document.documentElement.dataset.theme === "light" ? "light" : "dark");

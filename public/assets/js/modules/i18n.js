@@ -137,7 +137,8 @@ export async function initI18n() {
 
   document.querySelectorAll("[data-set-lang]").forEach((button) =>
     button.addEventListener("click", () => {
-      closeMenus();
+      const inDropdown = button.closest("[data-lang-menu]");
+      closeMenus(null, Boolean(inDropdown));
       setLang(button.dataset.setLang).catch((error) => console.warn("Não foi possível trocar o idioma:", error));
     }),
   );
@@ -146,26 +147,30 @@ export async function initI18n() {
 
 /* ---------- Menu suspenso de idioma (desktop) ---------- */
 const menus = [];
-function closeMenus(except) {
-  menus.forEach((m) => m !== except && m.close());
+function closeMenus(except, focusButton = false) {
+  menus.forEach((m) => m !== except && m.close(focusButton));
 }
 
 function setupDropdowns() {
   document.querySelectorAll("[data-lang-menu]").forEach((wrap) => {
     const button = wrap.querySelector("[aria-haspopup]");
     const options = [...wrap.querySelectorAll("[data-set-lang]")];
+    const list = wrap.querySelector(".lang__menu");
     if (!button) return;
+    if (list) list.inert = true; // fechado: fora do Tab e dos leitores de tela
     const isOpen = () => wrap.classList.contains("is-open");
     const menu = {
       open() {
         closeMenus(menu);
         wrap.classList.add("is-open");
+        if (list) list.inert = false;
         button.setAttribute("aria-expanded", "true");
         (options.find((o) => o.dataset.setLang === lang) || options[0])?.focus();
       },
       close(focusButton = false) {
         if (!isOpen()) return;
         wrap.classList.remove("is-open");
+        if (list) list.inert = true;
         button.setAttribute("aria-expanded", "false");
         if (focusButton) button.focus();
       },
@@ -185,7 +190,8 @@ function setupDropdowns() {
         const step = event.key === "ArrowDown" ? 1 : -1;
         options[(index + step + options.length) % options.length]?.focus();
       } else if (event.key === "Tab") {
-        menu.close();
+        // fecha e devolve o foco ao botão; o Tab continua a partir dele
+        menu.close(true);
       }
     });
     document.addEventListener("pointerdown", (event) => {

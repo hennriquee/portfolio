@@ -5,6 +5,7 @@
 import { initI18n } from "./modules/i18n.js";
 import { initTheme } from "./modules/theme.js";
 import { initTechIcons } from "./modules/tech-icons.js";
+import { initTechInfo } from "./modules/tech-info.js";
 import { initSmoothScroll } from "./modules/smooth-scroll.js";
 import { initNav } from "./modules/nav.js";
 import { initAvatarDock } from "./modules/avatar-dock.js";
@@ -25,6 +26,7 @@ if (!hasGsap || reduceMotion) root.classList.remove("js");
 
 initTheme({ reduceMotion });
 initTechIcons();
+initTechInfo();
 
 const lenis = hasGsap && !reduceMotion ? initSmoothScroll() : null;
 

@@ -96,6 +96,7 @@ button {
 h1,
 h2,
 h3,
+h4,
 p,
 ul,
 ol,
@@ -238,10 +239,6 @@ symbol .fill {
 .btn .icon {
   width: 18px;
   height: 18px;
-  transition: transform 0.5s var(--ease-out);
-}
-.btn:hover .icon {
-  transform: translate(2px, -2px);
 }
 .btn--sm {
   --h: 42px;
@@ -254,7 +251,7 @@ symbol .fill {
   background: linear-gradient(135deg, var(--accent-strong), color-mix(in srgb, var(--brand) 85%, var(--accent-strong)));
   border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   box-shadow:
-    0 12px 32px -12px color-mix(in srgb, var(--glow) 90%, transparent),
+    0 12px 28px -14px color-mix(in srgb, var(--glow) 80%, transparent),
     inset 0 1px 0 rgb(255 255 255 / 0.2);
 }
 .btn--primary::after {
@@ -271,7 +268,7 @@ symbol .fill {
 }
 .btn--primary:hover {
   box-shadow:
-    0 18px 48px -12px var(--glow),
+    0 16px 36px -14px var(--glow),
     inset 0 1px 0 rgb(255 255 255 / 0.25);
 }
 
@@ -292,6 +289,11 @@ symbol .fill {
 .btn--whatsapp .icon {
   width: 20px;
   height: 20px;
+}
+
+.btn--linkedin {
+  color: #fff;
+  background: #0a66c2;
 }
 
 .btn[disabled] {
@@ -318,7 +320,6 @@ symbol .fill {
 .icon-btn:hover {
   color: var(--text);
   border-color: color-mix(in srgb, var(--accent) 50%, transparent);
-  transform: translateY(-2px);
 }
 .icon-btn .icon {
   width: 18px;
@@ -406,6 +407,14 @@ symbol .fill {
     color 0.3s,
     border-color 0.3s,
     background-color 0.3s;
+}
+[data-info-chip] {
+  cursor: pointer;
+}
+[data-info-chip][aria-expanded="true"] {
+  color: var(--text);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
 }
 .chip:hover {
   color: var(--text);
@@ -589,6 +598,13 @@ html.i18n-wait body {
   inset: 12px 0 auto;
   z-index: 50;
   pointer-events: none;
+}
+.nav:has(.lang.is-open) {
+  z-index: 60;
+}
+/* a foto já encaixada na navbar continua visível com o menu aberto */
+.avatar.is-floating.is-docked {
+  z-index: 61;
 }
 
 .nav__inner {
@@ -1002,17 +1018,22 @@ html.i18n-wait body {
 }
 .mobile-menu__buttons {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
 }
 .mobile-menu__buttons .btn {
+  --h: 72px;
+  flex-direction: column;
+  gap: 6px;
   width: 100%;
   min-width: 0;
-  padding: 0 16px;
+  padding: 0 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
 }
 .mobile-menu__buttons .btn .icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 .mobile-menu.is-open .mobile-menu__links a,
 .mobile-menu.is-open .mobile-menu__foot {
@@ -1247,6 +1268,12 @@ html.menu-open {
 .orbit-chip .tech-ico {
   width: 16px;
   height: 16px;
+}
+.orbit-chip {
+  transition: opacity 0.35s var(--ease-out);
+}
+.orbit-chip.is-out {
+  opacity: 0;
 }
 .orbit-chip__swap {
   display: inline-flex;
@@ -1809,6 +1836,28 @@ html:not(.js) .tl-dot::after {
 .info-card .btn {
   margin-top: 8px;
 }
+.info-card--uniube {
+  --uni: #262161;
+  border-color: color-mix(in srgb, var(--uni) 75%, var(--line));
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--uni) 38%, transparent), transparent 70%),
+    linear-gradient(180deg, color-mix(in srgb, var(--surface) 70%, transparent), color-mix(in srgb, var(--bg-elev) 60%, transparent));
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--uni) 35%, transparent),
+    0 30px 60px -40px var(--shadow);
+}
+.info-card__logo {
+  width: 118px;
+  height: auto;
+  margin-bottom: 8px;
+  border-radius: 14px;
+  background: var(--uni);
+  padding: 10px 12px;
+}
+.info-card--uniube .kicker,
+.info-card--uniube .info-card__meta {
+  color: color-mix(in srgb, var(--uni) 30%, var(--accent));
+}
 
 /* Projetos */
 .projects__grid {
@@ -1935,6 +1984,10 @@ html:not(.js) .tl-dot::after {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
+.project .chips {
+  position: relative;
+  z-index: 3;
+}
 .project__desc {
   color: var(--text-muted);
   font-size: 0.95rem;
@@ -1965,14 +2018,10 @@ html:not(.js) .tl-dot::after {
 }
 @media (hover: hover) {
   .project:hover {
-    transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--accent) 30%, transparent);
   }
   .project:hover .browser__screen img {
     transform: scale(1.04);
-  }
-  .project:hover .project__cta .icon {
-    transform: translate(3px, -3px);
   }
 }
 
@@ -2058,8 +2107,9 @@ html:not(.js) .tl-dot::after {
   height: 16px;
   transition: transform 0.5s var(--ease-out);
 }
-.service__cta:hover .icon {
-  transform: translate(3px, -3px);
+.service__cta:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 .service--bi {
   grid-column: span 2;
@@ -2073,10 +2123,11 @@ html:not(.js) .tl-dot::after {
 }
 .bi-stack {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
   gap: 8px;
 }
 .bi-tool {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2092,25 +2143,41 @@ html:not(.js) .tl-dot::after {
   width: 20px;
   height: 20px;
 }
-.bi-tool.is-free::after,
-.bi-legend i {
-  content: "";
-  width: 7px;
-  height: 7px;
-  flex: none;
-  border-radius: 50%;
-  background: var(--ok);
-  box-shadow: 0 0 8px color-mix(in srgb, var(--ok) 70%, transparent);
+.bi-stack {
+  padding-top: 8px;
 }
-.bi-tool.is-free::after {
-  margin-left: auto;
+.bi-badge {
+  position: absolute;
+  top: -9px;
+  right: 8px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  white-space: nowrap;
+  color: var(--ok-text);
+  background: color-mix(in srgb, var(--ok) 14%, var(--bg-elev));
+  border: 1px solid color-mix(in srgb, var(--ok) 35%, transparent);
 }
-.bi-legend {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
+.bi-badge--free {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, var(--bg-elev));
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+}
+.bi-note {
+  font-size: 0.84rem;
+  line-height: 1.6;
   color: var(--text-dim);
+}
+.bi-note strong {
+  font-weight: 600;
+  color: var(--ok-text);
+}
+.bi-note strong:last-of-type {
+  color: var(--accent);
 }
 /* Card do PDF: texto + prévia das páginas em leque */
 .service--wide {
@@ -2255,7 +2322,7 @@ html:not(.js) .tl-dot::after {
     border-color 0.4s;
 }
 a.channel:hover {
-  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--accent) 35%, transparent);
 }
 .channel__icon {
   display: grid;
@@ -2275,6 +2342,11 @@ a.channel:hover {
 }
 .channel--wa {
   border-color: color-mix(in srgb, var(--whatsapp) 22%, transparent);
+}
+.channel--li .channel__icon {
+  color: #2f8fe8;
+  background: color-mix(in srgb, #0a66c2 14%, transparent);
+  border-color: color-mix(in srgb, #0a66c2 32%, transparent);
 }
 .channel__body {
   display: grid;
@@ -2304,7 +2376,6 @@ a.channel__value:hover {
 }
 a.channel:hover .channel__arrow {
   color: var(--text);
-  transform: translate(3px, -3px);
 }
 .channels__loc {
   display: flex;
@@ -2507,8 +2578,9 @@ a.channel:hover .channel__arrow {
   z-index: 40;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
   height: 56px;
+  min-width: 56px;
   padding: 0 16px;
   border-radius: 999px;
   color: #04140b;
@@ -2539,13 +2611,17 @@ a.channel:hover .channel__arrow {
 .wa-fab__label {
   display: inline-block;
   max-width: 0;
+  margin-left: 0;
   overflow: hidden;
   white-space: nowrap;
-  transition: max-width 0.5s var(--ease-out);
+  transition:
+    max-width 0.5s var(--ease-out),
+    margin-left 0.5s var(--ease-out);
 }
 .wa-fab:hover .wa-fab__label,
 .wa-fab:focus-visible .wa-fab__label {
-  max-width: 160px;
+  max-width: 180px;
+  margin-left: 10px;
 }
 
 /* Toast */
@@ -2960,4 +3036,101 @@ a.channel:hover .channel__arrow {
     background-color 0.45s,
     color 0.45s,
     border-color 0.45s !important;
+}
+
+/* ---------- 11. Balão informativo das tecnologias ---------- */
+.tech-pop {
+  visibility: hidden;
+  position: fixed;
+  z-index: 90;
+  width: min(320px, calc(100vw - 24px));
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--bg-elev);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  box-shadow: 0 24px 60px -24px var(--shadow);
+  opacity: 0;
+  transform: translateY(6px) scale(0.98);
+  transition:
+    opacity 0.22s var(--ease-out),
+    transform 0.3s var(--ease-out),
+    visibility 0s 0.3s;
+  pointer-events: none;
+}
+.tech-pop.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  transition:
+    opacity 0.22s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+.tech-pop__head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  padding-right: 24px;
+}
+.tech-pop__head .tech-ico {
+  width: 22px;
+  height: 22px;
+}
+.tech-pop__name {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.tech-pop__tag {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.tech-pop__text {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+.tech-pop__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--text-dim);
+}
+.tech-pop__close:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.tech-pop__close .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------- 12. Ajustes finos ---------- */
+/* E-mail cabe em uma linha mesmo em telas estreitas */
+.channel__value[data-email] {
+  font-size: clamp(0.8rem, 3.6vw, 1rem);
+}
+/* Card da Uniube mais suave no tema claro */
+:root[data-theme="light"] .info-card--uniube {
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--uni) 10%, transparent), transparent 65%),
+    var(--surface);
+}
+/* Card do PDF no celular: a prévia vem antes do texto */
+@media (max-width: 680px) {
+  .service--pdf .deck {
+    order: -1;
+  }
 }

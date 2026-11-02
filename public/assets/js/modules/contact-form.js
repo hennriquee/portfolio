@@ -138,7 +138,7 @@ export function initContactForm() {
     actions.append(
       makeLink(whatsappUrl(preview), t("form.sendWa"), "btn btn--whatsapp btn--sm", true),
       makeLink(
-        `mailto:${emailAddress()}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(data.message)}`,
+        `mailto:${emailAddress()}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`${data.message}\n\n— ${data.name} (${data.email})`)}`,
         t("form.openMail"),
         "btn btn--ghost btn--sm",
       ),
