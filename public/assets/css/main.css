@@ -3134,3 +3134,7 @@ a.channel:hover .channel__arrow {
     order: -1;
   }
 }
+/* Print em 16:9 mostrado inteiro (sem cortar as laterais) */
+.browser__screen--wide {
+  aspect-ratio: 16 / 9;
+}
