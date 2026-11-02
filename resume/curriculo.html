@@ -1,0 +1,497 @@
+<!doctype html>
+<!--
+  Fonte do currículo em PDF.
+  Para atualizar: edite este arquivo, abra no Chrome/Edge → Imprimir (Ctrl+P) →
+  "Salvar como PDF", margens "Nenhuma", marque "Gráficos de plano de fundo".
+  Salve como public/assets/docs/curriculo-bruno-henrique.pdf
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Currículo — Bruno Henrique Martins da Silva</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+    <style>
+      :root {
+        --brand: #001e5f; /* mesma cor principal do site */
+        --brand-2: #0b2f86;
+        --accent: #7fa2ff;
+        --accent-strong: #2d5bd8;
+        --ink: #0b1430;
+        --muted: #4a5675;
+        --line: #dfe5f3;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      body {
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+        color: var(--ink);
+        font-size: 9.6pt;
+        line-height: 1.5;
+        background: #e9edf6;
+      }
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 70mm 1fr;
+        background: #fff;
+        overflow: hidden;
+      }
+      h1,
+      h2,
+      h3,
+      p,
+      ul {
+        margin: 0;
+      }
+      ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      /* ---------- Coluna lateral ---------- */
+      .side {
+        position: relative;
+        padding: 15mm 8mm 12mm 10mm;
+        color: #e8eeff;
+        background:
+          radial-gradient(120% 50% at 0% 0%, rgba(127, 162, 255, 0.22), transparent 60%),
+          linear-gradient(180deg, var(--brand-2), var(--brand) 45%, #00143f);
+      }
+      .side::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+        background-size: 5mm 5mm;
+        pointer-events: none;
+      }
+      .side > * {
+        position: relative;
+        z-index: 1;
+      }
+      .side h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 8pt;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 3mm;
+        display: flex;
+        align-items: center;
+        gap: 2.5mm;
+      }
+      .side h2::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(127, 162, 255, 0.35);
+      }
+      .side section + section {
+        margin-top: 6.5mm;
+      }
+      .monogram {
+        width: 16mm;
+        height: 16mm;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 14pt;
+        letter-spacing: -0.02em;
+        color: #fff;
+        background: linear-gradient(135deg, var(--accent-strong), var(--brand));
+        border: 0.6mm solid rgba(127, 162, 255, 0.7);
+        margin-bottom: 7mm;
+      }
+      .info li {
+        display: grid;
+        gap: 0.3mm;
+        margin-bottom: 2.6mm;
+        font-size: 8.8pt;
+      }
+      .info span {
+        font-size: 7pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(200, 214, 255, 0.7);
+      }
+      .info a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .edu strong {
+        display: block;
+        font-size: 9.6pt;
+        color: #fff;
+      }
+      .edu p {
+        font-size: 8.6pt;
+        color: rgba(225, 233, 255, 0.85);
+      }
+      .edu .tag {
+        display: inline-block;
+        margin-top: 1.6mm;
+        padding: 0.6mm 2.4mm;
+        border-radius: 10mm;
+        font-size: 7.4pt;
+        color: #fff;
+        background: rgba(127, 162, 255, 0.2);
+        border: 1px solid rgba(127, 162, 255, 0.4);
+      }
+      .about {
+        font-size: 8.6pt;
+        line-height: 1.55;
+        color: rgba(232, 238, 255, 0.92);
+      }
+      .focus {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.4mm;
+      }
+      .focus span {
+        padding: 0.6mm 2.4mm;
+        border-radius: 10mm;
+        font-size: 7.6pt;
+        color: #fff;
+        background: rgba(127, 162, 255, 0.16);
+        border: 1px solid rgba(127, 162, 255, 0.38);
+      }
+      .soft li {
+        position: relative;
+        padding-left: 4mm;
+        margin-bottom: 1.4mm;
+        font-size: 8.8pt;
+        color: #f1f5ff;
+      }
+      .soft li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.9mm;
+        width: 1.5mm;
+        height: 1.5mm;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      /* ---------- Coluna principal ---------- */
+      .main {
+        padding: 13mm 12mm 10mm 11mm;
+      }
+      header.top {
+        padding-bottom: 4.5mm;
+        margin-bottom: 5mm;
+        border-bottom: 1px solid var(--line);
+      }
+      .name {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 22pt;
+        font-weight: 700;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: var(--brand);
+      }
+      .role {
+        margin-top: 2.2mm;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 10.5pt;
+        font-weight: 500;
+        color: var(--accent-strong);
+        letter-spacing: 0.01em;
+      }
+      .main h2 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 11pt;
+        font-weight: 700;
+        color: var(--brand);
+        letter-spacing: -0.01em;
+        display: flex;
+        align-items: center;
+        gap: 2.5mm;
+        margin-bottom: 3.2mm;
+      }
+      .main h2::before {
+        content: "";
+        width: 2.2mm;
+        height: 2.2mm;
+        border-radius: 0.6mm;
+        transform: rotate(45deg);
+        background: var(--accent-strong);
+      }
+      .main section + section {
+        margin-top: 4.5mm;
+      }
+
+      .skills {
+        columns: 2;
+        column-gap: 6mm;
+      }
+      .skills li {
+        break-inside: avoid;
+        margin-bottom: 1.3mm;
+      }
+      .skills li {
+        position: relative;
+        padding-left: 3.6mm;
+        font-size: 8.5pt;
+        line-height: 1.42;
+        color: var(--muted);
+      }
+      .skills li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 1.95mm;
+        width: 1.4mm;
+        height: 1.4mm;
+        border-radius: 50%;
+        background: var(--brand);
+      }
+      .skills b {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .xp {
+        position: relative;
+        padding-left: 6mm;
+      }
+      .xp::before {
+        content: "";
+        position: absolute;
+        left: 1.1mm;
+        top: 1.5mm;
+        bottom: 1.5mm;
+        width: 0.5mm;
+        border-radius: 1mm;
+        background: linear-gradient(var(--accent-strong), var(--line));
+      }
+      .job {
+        position: relative;
+        padding-bottom: 3.6mm;
+      }
+      .job::before {
+        content: "";
+        position: absolute;
+        left: -6mm;
+        top: 1.2mm;
+        width: 2.7mm;
+        height: 2.7mm;
+        border-radius: 50%;
+        background: #fff;
+        border: 0.6mm solid var(--accent-strong);
+      }
+      .job:first-child::before {
+        background: var(--accent-strong);
+        box-shadow: 0 0 0 1mm rgba(45, 91, 216, 0.15);
+      }
+      .job-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 4mm;
+      }
+      .job h3 {
+        font-size: 10pt;
+        font-weight: 700;
+        color: var(--ink);
+      }
+      .period {
+        flex: none;
+        font-size: 7.8pt;
+        font-weight: 600;
+        color: var(--accent-strong);
+        white-space: nowrap;
+      }
+      .company {
+        font-size: 8.8pt;
+        font-weight: 600;
+        color: var(--brand);
+        margin-top: 0.3mm;
+      }
+      .job p.desc {
+        margin-top: 1.4mm;
+        font-size: 8.6pt;
+        line-height: 1.45;
+        color: var(--muted);
+        text-align: justify;
+        hyphens: auto;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2mm;
+        margin-top: 2mm;
+      }
+      .chips span {
+        padding: 0.3mm 2.2mm;
+        border-radius: 10mm;
+        font-size: 7.2pt;
+        font-weight: 500;
+        color: var(--brand);
+        background: #edf2ff;
+        border: 1px solid #d5e0ff;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+        .page {
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <aside class="side">
+        <div class="monogram">BH</div>
+
+        <section>
+          <h2>Sobre</h2>
+          <p class="about">
+            Desenvolvedor e analista de dados. Construo produtos de dados de ponta a ponta — do tratamento de grandes
+            volumes com SQL e PySpark a APIs em Node.js e dashboards que apoiam decisões.
+          </p>
+        </section>
+
+        <section>
+          <h2>Contato</h2>
+          <ul class="info">
+            <li><span>Telefone / WhatsApp</span>(34) 99656-0351</li>
+            <li><span>E-mail</span><a href="mailto:brunohms2705@gmail.com">brunohms2705@gmail.com</a></li>
+            <li><span>GitHub</span><a href="https://github.com/hennriquee">github.com/hennriquee</a></li>
+            <li><span>Endereço</span>Rua Anísio Antônio de Carvalho, 380 — Alto Umuarama, Uberlândia – MG, 38405-366</li>
+            <li><span>Idade · CNH</span>21 anos · Categoria B</li>
+          </ul>
+        </section>
+
+        <section class="edu">
+          <h2>Graduação</h2>
+          <strong>Sistemas de Informação</strong>
+          <p>UNIUBE · Noturno</p>
+          <span class="tag">Conclusão: 2027</span>
+        </section>
+
+        <section>
+          <h2>Soft skills</h2>
+          <ul class="soft">
+            <li>Lógica de programação</li>
+            <li>Comunicação</li>
+            <li>Apresentação</li>
+            <li>Reconhecimento de padrões</li>
+            <li>Resolução de problemas e aprendizado</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Áreas de atuação</h2>
+          <div class="focus"><span>Desenvolvimento Web</span><span>Engenharia de Dados</span><span>BI &amp; Analytics</span><span>Automação</span></div>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="top">
+          <h1 class="name">Bruno Henrique<br />Martins da Silva</h1>
+          <p class="role">Desenvolvimento Web · Dados · BI &amp; Analytics</p>
+        </header>
+
+        <section>
+          <h2>Experiências</h2>
+          <div class="xp">
+            <article class="job">
+              <div class="job-head">
+                <h3>Assistente BI/Analytics II</h3>
+                <span class="period">mar/2026 — atual</span>
+              </div>
+              <p class="company">Martins S/A</p>
+              <p class="desc">
+                Desenvolvimento de produtos (dashboards) em JavaScript usando Chart.js no front, Node.js no back e API
+                para conexão com ClickHouse (OLAP) para tráfego de grandes volumes de dados, combinado com análise de
+                dados em SQL e PySpark para tratamento, combinações e desenvolvimento de tabelas dentro do Databricks e
+                DBeaver (usado para rodar o ClickHouse com interface).
+              </p>
+              <div class="chips">
+                <span>JavaScript</span><span>Chart.js</span><span>Node.js</span><span>ClickHouse</span><span>SQL</span><span>PySpark</span><span>Databricks</span>
+              </div>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Analista de Dados</h3>
+                <span class="period">mai/2024 — mar/2026</span>
+              </div>
+              <p class="company">Ubertec Service Usinagem</p>
+              <p class="desc">
+                Análise e criação de planilhas Excel para controle e banco de dados, desenvolvimento de dashboards e
+                indicadores interativos usando Power BI, gerenciando reuniões e apresentando informações para a gestão
+                da empresa, auxiliando com insights nas tomadas de decisão.
+              </p>
+              <div class="chips"><span>Power BI</span><span>Excel</span><span>Banco de dados</span><span>Apresentações</span></div>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Auxiliar de PCP Júnior</h3>
+                <span class="period">abr/2024 — mai/2024</span>
+              </div>
+              <p class="company">Ubertec Service Usinagem</p>
+              <p class="desc">Planejamento e Controle de Produção: programando e selecionando matéria-prima para a produção.</p>
+            </article>
+
+            <article class="job">
+              <div class="job-head">
+                <h3>Atendente de Telemarketing — Jovem Aprendiz</h3>
+                <span class="period">ago/2023 — mar/2024</span>
+              </div>
+              <p class="company">Callink · pelo Instituto João Bittar</p>
+              <p class="desc">Atendendo e recebendo clientes na operação Claro.</p>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <h2>Hard skills</h2>
+          <ul class="skills">
+            <li><b>Automação</b> de tarefas com Python</li>
+            <li><b>Web:</b> JavaScript, React, Node.js</li>
+            <li><b>Gráficos:</b> Chart.js, Cube.js</li>
+            <li>Desenvolvimento de <b>aplicativos (PWA)</b></li>
+            <li>Desenvolvimento de <b>APIs</b></li>
+            <li><b>Dados:</b> ClickHouse, SQL, MongoDB, PySpark</li>
+            <li><b>Design de software:</b> Bootstrap, MUI, CSS, telas responsivas</li>
+            <li><b>BI:</b> Power BI (Service e local), Metabase, Looker Studio, Gaio</li>
+            <li><b>Ferramentas de dados:</b> Databricks, DBeaver</li>
+            <li><b>Versionamento:</b> Git, GitHub, Bitbucket</li>
+            <li><b>Cloud:</b> Azure Web Services</li>
+            <li><b>Deploy:</b> Render, Vercel, Netlify, Uptime Robot</li>
+            <li><b>Linguagens:</b> C++, Java, PHP</li>
+            <li><b>Office:</b> Excel, Word, PowerPoint, Project</li>
+            <li><b>IAs mais usadas:</b> Claude, ChatGPT e Gemini</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
