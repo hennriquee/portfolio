@@ -1836,27 +1836,53 @@ html:not(.js) .tl-dot::after {
 .info-card .btn {
   margin-top: 8px;
 }
+/* Card da Uniube: pasta com aba no canto, a aba azul "abraça" a quina do card */
 .info-card--uniube {
-  --uni: #262161;
-  border-color: color-mix(in srgb, var(--uni) 75%, var(--line));
+  --uni: #011756;
+  --uni-lift: color-mix(in srgb, var(--uni) 72%, #2c46d8);
+  --uni-edge: #2f48d6;
+  /* a aba sai pra fora do card, então o overflow não pode cortar */
+  overflow: visible;
+  padding-top: 68px;
+  border-color: color-mix(in srgb, var(--uni-edge) 72%, transparent);
   background:
     linear-gradient(160deg, color-mix(in srgb, var(--uni) 38%, transparent), transparent 70%),
     linear-gradient(180deg, color-mix(in srgb, var(--surface) 70%, transparent), color-mix(in srgb, var(--bg-elev) 60%, transparent));
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--uni) 35%, transparent),
+    inset 0 1px 0 var(--highlight),
+    0 0 28px -8px color-mix(in srgb, var(--uni-edge) 55%, transparent),
     0 30px 60px -40px var(--shadow);
 }
-.info-card__logo {
+/* 200×96: topo 18px acima do card, base 48px dentro dele, aba lateral 11px além da borda direita */
+.uni-tab {
+  position: absolute;
+  top: -18px;
+  right: -11px;
+  z-index: 2;
+  width: 200px;
+  height: 96px;
+  pointer-events: none;
+}
+.uni-tab__shape {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: url(#uni-tab-fill);
+  stroke: color-mix(in srgb, var(--uni-edge) 72%, transparent);
+  stroke-width: 1;
+  filter: drop-shadow(0 4px 14px color-mix(in srgb, var(--uni-edge) 38%, transparent));
+}
+.uni-tab__logo {
+  position: absolute;
+  top: 16px;
+  left: 70px;
   width: 118px;
   height: auto;
-  margin-bottom: 8px;
-  border-radius: 14px;
-  background: var(--uni);
-  padding: 10px 12px;
 }
 .info-card--uniube .kicker,
 .info-card--uniube .info-card__meta {
-  color: color-mix(in srgb, var(--uni) 30%, var(--accent));
+  color: color-mix(in srgb, var(--uni-edge) 45%, var(--accent));
 }
 
 /* Projetos */
