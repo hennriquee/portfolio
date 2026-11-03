@@ -1838,8 +1838,8 @@ html:not(.js) .tl-dot::after {
 }
 /* Card da Uniube: pasta com aba no canto, a aba azul "abraça" a quina do card */
 .info-card--uniube {
+  /* azul da marca Uniube: fixo nos dois temas, a logo é sempre branca */
   --uni: #011756;
-  --uni-lift: color-mix(in srgb, var(--uni) 72%, #2c46d8);
   --uni-edge: #2f48d6;
   /* a aba sai pra fora do card, então o overflow não pode cortar */
   overflow: visible;
@@ -1868,10 +1868,10 @@ html:not(.js) .tl-dot::after {
   inset: 0;
   width: 100%;
   height: 100%;
-  fill: url(#uni-tab-fill);
-  stroke: color-mix(in srgb, var(--uni-edge) 72%, transparent);
+  fill: var(--uni);
+  stroke: var(--uni);
   stroke-width: 1;
-  filter: drop-shadow(0 4px 14px color-mix(in srgb, var(--uni-edge) 38%, transparent));
+  filter: drop-shadow(0 4px 14px color-mix(in srgb, var(--uni) 55%, transparent));
 }
 .uni-tab__logo {
   position: absolute;
