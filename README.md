@@ -110,9 +110,10 @@ Se aparecer `"Envio indisponível"`, as variáveis ainda não chegaram à funç�
 Enquanto o envio não estiver configurado, o formulário continua funcionando como atalho:
 mostra os botões de WhatsApp e e-mail já preenchidos.
 
-> Dica: com o domínio definido, troque `og:image` no `index.html` por uma URL completa
-> (ex.: `https://seusite.netlify.app/assets/img/og-image.jpg`) para a prévia aparecer
-> no WhatsApp e no LinkedIn.
+> Prévia do link (WhatsApp, LinkedIn): o `og:image`, o `og:url` e o `canonical` no `index.html`
+> usam o endereço completo `https://portfoliobrunohenrique.netlify.app/` (o `twitter:image` também).
+> Se o domínio mudar, troque nesses quatro lugares. A foto é quadrada (`bruno-640.jpg`) para aparecer como
+> miniatura ao lado do link.
 
 ### Segurança do formulário
 
